@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>D:\User\isikazu0131\Documents\暇つぶしプログラム\0 次郎向け大規模アプリ\JiroPackEditor\JiroPackEditor\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="AppInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MessageBoxOnce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="QFormSPDP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SelectTJAIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

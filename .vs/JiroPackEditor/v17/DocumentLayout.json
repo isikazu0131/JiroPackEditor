@@ -1,0 +1,61 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\JiroPackEditor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\jiropackeditor\\jiropackeditor\\appinfodialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\appinfodialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\jiropackeditor\\jiropackeditor\\appinfodialog.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\appinfodialog.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 231,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppInfoDialog.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\JiroPackEditor\\JiroPackEditor\\AppInfoDialog.cs",
+              "RelativeDocumentMoniker": "JiroPackEditor\\AppInfoDialog.cs",
+              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\JiroPackEditor\\JiroPackEditor\\AppInfoDialog.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "JiroPackEditor\\AppInfoDialog.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T13:32:29.801Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppInfoDialog.Designer.cs",
+              "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\JiroPackEditor\\JiroPackEditor\\AppInfoDialog.Designer.cs",
+              "RelativeDocumentMoniker": "JiroPackEditor\\AppInfoDialog.Designer.cs",
+              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\JiroPackEditor\\JiroPackEditor\\AppInfoDialog.Designer.cs",
+              "RelativeToolTip": "JiroPackEditor\\AppInfoDialog.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T13:31:53.724Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
