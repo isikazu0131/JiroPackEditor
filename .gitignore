@@ -1,0 +1,6 @@
+*.bin
+*.vsidx
+*.v2
+*.dll
+*.exe
+*.pdb
