@@ -17,6 +17,11 @@ namespace JiroPackEditor {
     public class TJP {
 
         /// <summary>
+        /// 作られたバージョン（しばらくは対応するが、古すぎるバージョンの場合はハネる）
+        /// </summary>
+        public int Version { get; set; }
+
+        /// <summary>
         /// パック名
         /// </summary>
         public string Name { get; set; }
@@ -59,7 +64,9 @@ namespace JiroPackEditor {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public TJP() {
+        public TJP()
+        {
+            Version = Constants.AppInfo.VersionInt;
             TJCs = new List<TJC>();
         }
 

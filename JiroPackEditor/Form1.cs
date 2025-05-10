@@ -539,7 +539,7 @@ namespace JiroPackEditor
 
             // UpdateThresholdByRatio();
             CbUseCondition.Checked = nowTJC.isTJDEnabled;
-            CbTitleInvisible.Checked = nowTJC.IsTitleHide;
+            CbTitleUnVisible1.Checked = nowTJC.IsTitleHideList[0];
             TbCourseName.Text = nowTJC.Name;
             LbCourseNotes.Text = nowTJC.TotalNoteCount().ToString();
             LbCourseTime.Text = ToMinSec(nowTJC.TotalOggTime());
@@ -1676,18 +1676,26 @@ namespace JiroPackEditor
         private void CbTitleInvisible_CheckedChanged(object sender, EventArgs e)
         {
             if (FlagChangeByUI == true) return;
-            nowTJP.TJCs[nowTJCindex].IsTitleHide = CbTitleInvisible.Checked;
+
+            CbTitleUnVisible1.Checked = CbTitleInvisible.Checked;
+            CbTitleUnVisible2.Checked = CbTitleInvisible.Checked;
+            CbTitleUnVisible3.Checked = CbTitleInvisible.Checked;
+            CbTitleUnVisible4.Checked = CbTitleInvisible.Checked;
+            CbTitleUnVisible5.Checked = CbTitleInvisible.Checked;
+            ChangeSaveStatus();
         }
 
         private void CbNumbering_CheckedChanged(object sender, EventArgs e)
         {
             nowTJP.TJCs[nowTJCindex].IsNumberingEnable = CbNumbering.Checked;
+            ChangeSaveStatus();
         }
 
         private void NmNumbering_ValueChanged(object sender, EventArgs e)
         {
             if (FlagChangeByUI == true) return;
             nowTJP.TJCs[nowTJCindex].Number = (int)NmNumbering.Value;
+            ChangeSaveStatus();
         }
 
         private void CbIsTestTJCDelete_CheckedChanged(object sender, EventArgs e)
@@ -1699,6 +1707,7 @@ namespace JiroPackEditor
         {
             if (FlagChangeByUI == true) return;
             nowTJP.TJCs[nowTJCindex].Life = (int)NmNumbering.Value;
+            ChangeSaveStatus();
         }
 
         private void このアプリについての情報ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1732,7 +1741,7 @@ namespace JiroPackEditor
                 Life = nowTJC.Life,
                 TJAs = nowTJC.TJAs,
                 IsNumberingEnable = nowTJC.IsNumberingEnable,
-                IsTitleHide = nowTJC.IsTitleHide,
+                IsTitleHideList = nowTJC.IsTitleHideList,
                 LevelBackColor = nowTJC.LevelBackColor,
                 LevelForeColor = nowTJC.LevelForeColor,
                 isTJDEnabled = nowTJC.isTJDEnabled,
@@ -1799,6 +1808,41 @@ namespace JiroPackEditor
         {
             isDragging = false; // ドラッグ状態を解除
 
+        }
+
+        /// <summary>
+        /// 各楽曲名の表示・非表示の変更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbTitleUnVisible1_CheckedChanged(object sender, EventArgs e)
+        {
+            nowTJC.TitleUnVisible(0, CbTitleUnVisible1.Checked);
+            ChangeSaveStatus();
+        }
+
+        private void CbTitleUnVisible2_CheckedChanged(object sender, EventArgs e)
+        {
+            nowTJC.TitleUnVisible(1, CbTitleUnVisible2.Checked);
+            ChangeSaveStatus();
+        }
+
+        private void CbTitleUnVisible3_CheckedChanged(object sender, EventArgs e)
+        {
+            nowTJC.TitleUnVisible(2, CbTitleUnVisible3.Checked);
+            ChangeSaveStatus();
+        }
+
+        private void CbTitleUnVisible4_CheckedChanged(object sender, EventArgs e)
+        {
+            nowTJC.TitleUnVisible(3, CbTitleUnVisible4.Checked);
+            ChangeSaveStatus();
+        }
+
+        private void CbTitleUnVisible5_CheckedChanged(object sender, EventArgs e)
+        {
+            nowTJC.TitleUnVisible(4, CbTitleUnVisible5.Checked);
+            ChangeSaveStatus();
         }
     }
 }

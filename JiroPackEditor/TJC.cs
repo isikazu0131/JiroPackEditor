@@ -40,11 +40,11 @@ namespace JiroPackEditor {
         /// </summary>
         public bool IsNumberingEnable { get; set; }
 
-        /// <summary>
-        /// 各楽曲のTITLEを非表示にするか
-        /// Default: True
-        /// </summary>
-        public bool IsTitleHide { get; set; }
+        ///// <summary>
+        ///// 各楽曲のTITLEを非表示にするか
+        ///// Default: True
+        ///// </summary>
+        //public bool IsTitleHide { get; set; }
 
         /// <summary>
         /// 課題曲フォルダ内各レベルフォルダ表示カラー（背景）
@@ -77,6 +77,11 @@ namespace JiroPackEditor {
         /// </summary>
         public bool isTJDCombine { get; set; }
 
+        /// <summary>
+        /// TITLEを表示させるか
+        /// </summary>
+        public List<bool> IsTitleHideList { get; set; }
+
         public TJC() {
             // 5曲MAX
             // 上書きしたり削除したりしまくるので、
@@ -88,12 +93,20 @@ namespace JiroPackEditor {
                 null,
                 null,
             };
+            IsTitleHideList = new List<bool>()
+            {
+                false,
+                false,
+                false,
+                false,
+                false,
+
+            };
             TJDRed = new TJD("赤合格");
             TJDGold = new TJD("金合格");
             LevelBackColor = ColorInfo.GetColorCode(Color.White);
             LevelForeColor = ColorInfo.GetColorCode(Color.Black);
             IsNumberingEnable = true;
-            IsTitleHide = false;
             isTJDEnabled = true;
         }
 
@@ -357,6 +370,15 @@ namespace JiroPackEditor {
         public bool Export(string tjpName, DirectoryInfo packDInfo) {
             try {
                 
+                // 前バージョン対策
+                if(IsTitleHideList == null)
+                {
+                    IsTitleHideList = new List<bool>()
+                    {
+                        false, false, false, false, false,
+                    };
+                }
+
                 // ナンバリングした数値
                 string numberedTJCName = IsNumberingEnable ? $"{this.Number.ToString("000")} {this.Name}" : this.Name;
                 numberedTJCName = GrobalMethod.CutInvalidChar(numberedTJCName);
@@ -424,7 +446,7 @@ namespace JiroPackEditor {
                     oggInfo.CopyTo(outputOGGpath, true);
 
                     // 楽曲名非表示
-                    if (IsTitleHide) TJATITLEHide(copiedTJA);
+                    if (IsTitleHideList[tja.index] == true) TJATITLEHide(copiedTJA);
                 }
 
                 // Genre.iniをエクスポート
@@ -492,6 +514,21 @@ namespace JiroPackEditor {
 
         }
 
+        /// <summary>
+        /// num番目の譜面のTITLEを非表示・表示にします
+        /// </summary>
+        /// <param name="num"></param>
+        public void TitleUnVisible(int num, bool visible)
+        {
+            if (IsTitleHideList == null)
+            {
+                IsTitleHideList = new List<bool>()
+                {
+                    false, false, false, false, false,
+                };
+            }
+            IsTitleHideList[num] = visible;
+        }
 
     }
 }

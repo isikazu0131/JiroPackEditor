@@ -30,7 +30,7 @@ namespace JiroPackEditor
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            TreeNode treeNode1 = new TreeNode("新しいパック");
+            TreeNode treeNode5 = new TreeNode("新しいパック");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             TrPack = new TreeView();
             BtCreate = new Button();
@@ -78,6 +78,13 @@ namespace JiroPackEditor
             RClickMenuTJCDuplicate = new ToolStripMenuItem();
             RClickMenuTJCDelete = new ToolStripMenuItem();
             PanelCourse = new Panel();
+            label12 = new Label();
+            CbTitleUnVisible5 = new CheckBox();
+            CbTitleUnVisible4 = new CheckBox();
+            CbTitleUnVisible3 = new CheckBox();
+            CbTitleInvisible = new CheckBox();
+            CbTitleUnVisible2 = new CheckBox();
+            CbTitleUnVisible1 = new CheckBox();
             label37 = new Label();
             label36 = new Label();
             label35 = new Label();
@@ -91,7 +98,6 @@ namespace JiroPackEditor
             LbLevelColorView = new Label();
             label14 = new Label();
             label10 = new Label();
-            CbTitleInvisible = new CheckBox();
             LbLevel1 = new Label();
             label31 = new Label();
             LbLevel4 = new Label();
@@ -170,7 +176,6 @@ namespace JiroPackEditor
             PbClose = new PictureBox();
             LbTitle = new Label();
             pictureBox1 = new PictureBox();
-            label12 = new Label();
             PanelPack.SuspendLayout();
             panel2.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -200,9 +205,9 @@ namespace JiroPackEditor
             TrPack.Location = new Point(8, 61);
             TrPack.Margin = new Padding(2);
             TrPack.Name = "TrPack";
-            treeNode1.Name = "PackNode";
-            treeNode1.Text = "新しいパック";
-            TrPack.Nodes.AddRange(new TreeNode[] { treeNode1 });
+            treeNode5.Name = "PackNode";
+            treeNode5.Text = "新しいパック";
+            TrPack.Nodes.AddRange(new TreeNode[] { treeNode5 });
             TrPack.Size = new Size(335, 628);
             TrPack.TabIndex = 0;
             TrPack.AfterSelect += TrPack_AfterSelect;
@@ -515,7 +520,7 @@ namespace JiroPackEditor
             menuStrip1.Location = new Point(0, 35);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 1, 0, 1);
-            menuStrip1.Size = new Size(405, 24);
+            menuStrip1.Size = new Size(285, 24);
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -661,6 +666,13 @@ namespace JiroPackEditor
             // 
             // PanelCourse
             // 
+            PanelCourse.Controls.Add(label12);
+            PanelCourse.Controls.Add(CbTitleUnVisible5);
+            PanelCourse.Controls.Add(CbTitleUnVisible4);
+            PanelCourse.Controls.Add(CbTitleUnVisible3);
+            PanelCourse.Controls.Add(CbTitleInvisible);
+            PanelCourse.Controls.Add(CbTitleUnVisible2);
+            PanelCourse.Controls.Add(CbTitleUnVisible1);
             PanelCourse.Controls.Add(label37);
             PanelCourse.Controls.Add(label36);
             PanelCourse.Controls.Add(label35);
@@ -715,11 +727,101 @@ namespace JiroPackEditor
             PanelCourse.TabIndex = 12;
             PanelCourse.Paint += PanelCourse_Paint;
             // 
+            // label12
+            // 
+            label12.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            label12.Location = new Point(4, 66);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(61, 26);
+            label12.TabIndex = 62;
+            label12.Text = "TITLE\r\n非表示";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // CbTitleUnVisible5
+            // 
+            CbTitleUnVisible5.AutoSize = true;
+            CbTitleUnVisible5.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            CbTitleUnVisible5.ForeColor = Color.Red;
+            CbTitleUnVisible5.Location = new Point(24, 222);
+            CbTitleUnVisible5.Margin = new Padding(4);
+            CbTitleUnVisible5.Name = "CbTitleUnVisible5";
+            CbTitleUnVisible5.Size = new Size(15, 14);
+            CbTitleUnVisible5.TabIndex = 61;
+            CbTitleUnVisible5.UseVisualStyleBackColor = true;
+            CbTitleUnVisible5.CheckedChanged += CbTitleUnVisible5_CheckedChanged;
+            // 
+            // CbTitleUnVisible4
+            // 
+            CbTitleUnVisible4.AutoSize = true;
+            CbTitleUnVisible4.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            CbTitleUnVisible4.ForeColor = Color.Red;
+            CbTitleUnVisible4.Location = new Point(24, 192);
+            CbTitleUnVisible4.Margin = new Padding(4);
+            CbTitleUnVisible4.Name = "CbTitleUnVisible4";
+            CbTitleUnVisible4.Size = new Size(15, 14);
+            CbTitleUnVisible4.TabIndex = 60;
+            CbTitleUnVisible4.UseVisualStyleBackColor = true;
+            CbTitleUnVisible4.CheckedChanged += CbTitleUnVisible4_CheckedChanged;
+            // 
+            // CbTitleUnVisible3
+            // 
+            CbTitleUnVisible3.AutoSize = true;
+            CbTitleUnVisible3.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            CbTitleUnVisible3.ForeColor = Color.Red;
+            CbTitleUnVisible3.Location = new Point(24, 162);
+            CbTitleUnVisible3.Margin = new Padding(4);
+            CbTitleUnVisible3.Name = "CbTitleUnVisible3";
+            CbTitleUnVisible3.Size = new Size(15, 14);
+            CbTitleUnVisible3.TabIndex = 59;
+            CbTitleUnVisible3.UseVisualStyleBackColor = true;
+            CbTitleUnVisible3.CheckedChanged += CbTitleUnVisible3_CheckedChanged;
+            // 
+            // CbTitleInvisible
+            // 
+            CbTitleInvisible.AutoSize = true;
+            CbTitleInvisible.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            CbTitleInvisible.ForeColor = Color.Red;
+            CbTitleInvisible.Location = new Point(24, 251);
+            CbTitleInvisible.Margin = new Padding(4);
+            CbTitleInvisible.Name = "CbTitleInvisible";
+            CbTitleInvisible.Size = new Size(221, 16);
+            CbTitleInvisible.TabIndex = 40;
+            CbTitleInvisible.Text = "各楽曲のTITLEをすべて非表示にする";
+            CbTitleInvisible.UseVisualStyleBackColor = true;
+            CbTitleInvisible.CheckedChanged += CbTitleInvisible_CheckedChanged;
+            // 
+            // CbTitleUnVisible2
+            // 
+            CbTitleUnVisible2.AutoSize = true;
+            CbTitleUnVisible2.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            CbTitleUnVisible2.ForeColor = Color.Red;
+            CbTitleUnVisible2.Location = new Point(24, 132);
+            CbTitleUnVisible2.Margin = new Padding(4);
+            CbTitleUnVisible2.Name = "CbTitleUnVisible2";
+            CbTitleUnVisible2.Size = new Size(15, 14);
+            CbTitleUnVisible2.TabIndex = 58;
+            CbTitleUnVisible2.UseVisualStyleBackColor = true;
+            CbTitleUnVisible2.CheckedChanged += CbTitleUnVisible2_CheckedChanged;
+            // 
+            // CbTitleUnVisible1
+            // 
+            CbTitleUnVisible1.AutoSize = true;
+            CbTitleUnVisible1.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            CbTitleUnVisible1.ForeColor = Color.Red;
+            CbTitleUnVisible1.Location = new Point(24, 102);
+            CbTitleUnVisible1.Margin = new Padding(4);
+            CbTitleUnVisible1.Name = "CbTitleUnVisible1";
+            CbTitleUnVisible1.Size = new Size(15, 14);
+            CbTitleUnVisible1.TabIndex = 57;
+            CbTitleUnVisible1.UseVisualStyleBackColor = true;
+            CbTitleUnVisible1.CheckedChanged += CbTitleUnVisible1_CheckedChanged;
+            // 
             // label37
             // 
             label37.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label37.Font = new Font("MS UI Gothic", 9F);
-            label37.Location = new Point(567, 203);
+            label37.Location = new Point(567, 214);
             label37.Margin = new Padding(4, 0, 4, 0);
             label37.Name = "label37";
             label37.Size = new Size(35, 29);
@@ -731,7 +833,7 @@ namespace JiroPackEditor
             // 
             label36.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label36.Font = new Font("MS UI Gothic", 9F);
-            label36.Location = new Point(567, 174);
+            label36.Location = new Point(567, 184);
             label36.Margin = new Padding(4, 0, 4, 0);
             label36.Name = "label36";
             label36.Size = new Size(35, 29);
@@ -743,7 +845,7 @@ namespace JiroPackEditor
             // 
             label35.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label35.Font = new Font("MS UI Gothic", 9F);
-            label35.Location = new Point(567, 146);
+            label35.Location = new Point(567, 154);
             label35.Margin = new Padding(4, 0, 4, 0);
             label35.Name = "label35";
             label35.Size = new Size(35, 29);
@@ -755,7 +857,7 @@ namespace JiroPackEditor
             // 
             label34.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label34.Font = new Font("MS UI Gothic", 9F);
-            label34.Location = new Point(567, 118);
+            label34.Location = new Point(567, 124);
             label34.Margin = new Padding(4, 0, 4, 0);
             label34.Name = "label34";
             label34.Size = new Size(35, 29);
@@ -767,7 +869,7 @@ namespace JiroPackEditor
             // 
             label33.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label33.Font = new Font("MS UI Gothic", 9F);
-            label33.Location = new Point(567, 90);
+            label33.Location = new Point(567, 94);
             label33.Margin = new Padding(4, 0, 4, 0);
             label33.Name = "label33";
             label33.Size = new Size(35, 29);
@@ -779,7 +881,7 @@ namespace JiroPackEditor
             // 
             LbLevel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbLevel5.Font = new Font("MS UI Gothic", 9F);
-            LbLevel5.Location = new Point(610, 207);
+            LbLevel5.Location = new Point(610, 218);
             LbLevel5.Margin = new Padding(4, 0, 4, 0);
             LbLevel5.Name = "LbLevel5";
             LbLevel5.Size = new Size(31, 20);
@@ -791,7 +893,7 @@ namespace JiroPackEditor
             // 
             LbLevel3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbLevel3.Font = new Font("MS UI Gothic", 9F);
-            LbLevel3.Location = new Point(610, 150);
+            LbLevel3.Location = new Point(610, 158);
             LbLevel3.Margin = new Padding(4, 0, 4, 0);
             LbLevel3.Name = "LbLevel3";
             LbLevel3.Size = new Size(31, 20);
@@ -803,7 +905,7 @@ namespace JiroPackEditor
             // 
             LbLevel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbLevel2.Font = new Font("MS UI Gothic", 9F);
-            LbLevel2.Location = new Point(610, 122);
+            LbLevel2.Location = new Point(610, 128);
             LbLevel2.Margin = new Padding(4, 0, 4, 0);
             LbLevel2.Name = "LbLevel2";
             LbLevel2.Size = new Size(31, 20);
@@ -818,12 +920,11 @@ namespace JiroPackEditor
             panel1.Controls.Add(LbLevelColorView);
             panel1.Controls.Add(label14);
             panel1.Controls.Add(label10);
-            panel1.Controls.Add(CbTitleInvisible);
             panel1.ForeColor = SystemColors.ControlText;
-            panel1.Location = new Point(0, 407);
+            panel1.Location = new Point(0, 436);
             panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(649, 105);
+            panel1.Size = new Size(649, 76);
             panel1.TabIndex = 40;
             // 
             // BtChangeCourseSongColor
@@ -873,25 +974,11 @@ namespace JiroPackEditor
             label10.TabIndex = 34;
             label10.Text = "そのほかの設定";
             // 
-            // CbTitleInvisible
-            // 
-            CbTitleInvisible.AutoSize = true;
-            CbTitleInvisible.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            CbTitleInvisible.ForeColor = Color.Red;
-            CbTitleInvisible.Location = new Point(8, 82);
-            CbTitleInvisible.Margin = new Padding(4);
-            CbTitleInvisible.Name = "CbTitleInvisible";
-            CbTitleInvisible.Size = new Size(189, 16);
-            CbTitleInvisible.TabIndex = 40;
-            CbTitleInvisible.Text = "各楽曲のTITLEを非表示にする";
-            CbTitleInvisible.UseVisualStyleBackColor = true;
-            CbTitleInvisible.CheckedChanged += CbTitleInvisible_CheckedChanged;
-            // 
             // LbLevel1
             // 
             LbLevel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbLevel1.Font = new Font("MS UI Gothic", 9F);
-            LbLevel1.Location = new Point(610, 94);
+            LbLevel1.Location = new Point(610, 98);
             LbLevel1.Margin = new Padding(4, 0, 4, 0);
             LbLevel1.Name = "LbLevel1";
             LbLevel1.Size = new Size(31, 20);
@@ -904,7 +991,7 @@ namespace JiroPackEditor
             label31.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label31.AutoSize = true;
             label31.Font = new Font("MS UI Gothic", 9F);
-            label31.Location = new Point(590, 67);
+            label31.Location = new Point(590, 71);
             label31.Margin = new Padding(4, 0, 4, 0);
             label31.Name = "label31";
             label31.Size = new Size(39, 12);
@@ -915,7 +1002,7 @@ namespace JiroPackEditor
             // 
             LbLevel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbLevel4.Font = new Font("MS UI Gothic", 9F);
-            LbLevel4.Location = new Point(610, 178);
+            LbLevel4.Location = new Point(610, 188);
             LbLevel4.Margin = new Padding(4, 0, 4, 0);
             LbLevel4.Name = "LbLevel4";
             LbLevel4.Size = new Size(31, 20);
@@ -926,7 +1013,7 @@ namespace JiroPackEditor
             // BtClear5
             // 
             BtClear5.Font = new Font("MS UI Gothic", 9F);
-            BtClear5.Location = new Point(437, 206);
+            BtClear5.Location = new Point(437, 216);
             BtClear5.Margin = new Padding(4);
             BtClear5.Name = "BtClear5";
             BtClear5.Size = new Size(60, 24);
@@ -938,7 +1025,7 @@ namespace JiroPackEditor
             // BtClear4
             // 
             BtClear4.Font = new Font("MS UI Gothic", 9F);
-            BtClear4.Location = new Point(436, 178);
+            BtClear4.Location = new Point(436, 186);
             BtClear4.Margin = new Padding(4);
             BtClear4.Name = "BtClear4";
             BtClear4.Size = new Size(60, 24);
@@ -950,7 +1037,7 @@ namespace JiroPackEditor
             // BtClear3
             // 
             BtClear3.Font = new Font("MS UI Gothic", 9F);
-            BtClear3.Location = new Point(436, 149);
+            BtClear3.Location = new Point(436, 156);
             BtClear3.Margin = new Padding(4);
             BtClear3.Name = "BtClear3";
             BtClear3.Size = new Size(60, 24);
@@ -962,7 +1049,7 @@ namespace JiroPackEditor
             // BtClear2
             // 
             BtClear2.Font = new Font("MS UI Gothic", 9F);
-            BtClear2.Location = new Point(437, 120);
+            BtClear2.Location = new Point(437, 126);
             BtClear2.Margin = new Padding(4);
             BtClear2.Name = "BtClear2";
             BtClear2.Size = new Size(60, 24);
@@ -974,7 +1061,7 @@ namespace JiroPackEditor
             // BtClear1
             // 
             BtClear1.Font = new Font("MS UI Gothic", 9F);
-            BtClear1.Location = new Point(437, 92);
+            BtClear1.Location = new Point(437, 96);
             BtClear1.Margin = new Padding(4);
             BtClear1.Name = "BtClear1";
             BtClear1.Size = new Size(60, 24);
@@ -986,7 +1073,6 @@ namespace JiroPackEditor
             // PanelCourseInfo
             // 
             PanelCourseInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PanelCourseInfo.Controls.Add(label12);
             PanelCourseInfo.Controls.Add(BtTestPlay);
             PanelCourseInfo.Controls.Add(LbAvgLEVEL);
             PanelCourseInfo.Controls.Add(label18);
@@ -1098,7 +1184,7 @@ namespace JiroPackEditor
             // 
             LbNotesCount5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbNotesCount5.Font = new Font("MS UI Gothic", 9F);
-            LbNotesCount5.Location = new Point(506, 207);
+            LbNotesCount5.Location = new Point(506, 218);
             LbNotesCount5.Margin = new Padding(4, 0, 4, 0);
             LbNotesCount5.Name = "LbNotesCount5";
             LbNotesCount5.Size = new Size(61, 20);
@@ -1108,9 +1194,8 @@ namespace JiroPackEditor
             // 
             // Lb5th
             // 
-            Lb5th.AutoSize = true;
             Lb5th.Font = new Font("MS UI Gothic", 9F);
-            Lb5th.Location = new Point(9, 213);
+            Lb5th.Location = new Point(58, 224);
             Lb5th.Margin = new Padding(4, 0, 4, 0);
             Lb5th.Name = "Lb5th";
             Lb5th.Size = new Size(35, 12);
@@ -1121,17 +1206,17 @@ namespace JiroPackEditor
             // 
             TbTJA5.BackColor = Color.White;
             TbTJA5.Font = new Font("MS UI Gothic", 9F);
-            TbTJA5.Location = new Point(63, 209);
+            TbTJA5.Location = new Point(105, 219);
             TbTJA5.Margin = new Padding(4);
             TbTJA5.Name = "TbTJA5";
             TbTJA5.ReadOnly = true;
-            TbTJA5.Size = new Size(297, 19);
+            TbTJA5.Size = new Size(255, 19);
             TbTJA5.TabIndex = 37;
             // 
             // BtSongSelect5
             // 
             BtSongSelect5.Font = new Font("MS UI Gothic", 9F);
-            BtSongSelect5.Location = new Point(369, 205);
+            BtSongSelect5.Location = new Point(369, 216);
             BtSongSelect5.Margin = new Padding(4);
             BtSongSelect5.Name = "BtSongSelect5";
             BtSongSelect5.Size = new Size(60, 24);
@@ -1144,17 +1229,17 @@ namespace JiroPackEditor
             // 
             TbTJA4.BackColor = Color.White;
             TbTJA4.Font = new Font("MS UI Gothic", 9F);
-            TbTJA4.Location = new Point(63, 181);
+            TbTJA4.Location = new Point(105, 189);
             TbTJA4.Margin = new Padding(4);
             TbTJA4.Name = "TbTJA4";
             TbTJA4.ReadOnly = true;
-            TbTJA4.Size = new Size(297, 19);
+            TbTJA4.Size = new Size(255, 19);
             TbTJA4.TabIndex = 34;
             // 
             // BtSongSelect4
             // 
             BtSongSelect4.Font = new Font("MS UI Gothic", 9F);
-            BtSongSelect4.Location = new Point(369, 177);
+            BtSongSelect4.Location = new Point(369, 186);
             BtSongSelect4.Margin = new Padding(4);
             BtSongSelect4.Name = "BtSongSelect4";
             BtSongSelect4.Size = new Size(60, 24);
@@ -1165,9 +1250,8 @@ namespace JiroPackEditor
             // 
             // Lb4th
             // 
-            Lb4th.AutoSize = true;
             Lb4th.Font = new Font("MS UI Gothic", 9F);
-            Lb4th.Location = new Point(9, 185);
+            Lb4th.Location = new Point(58, 194);
             Lb4th.Margin = new Padding(4, 0, 4, 0);
             Lb4th.Name = "Lb4th";
             Lb4th.Size = new Size(35, 12);
@@ -1241,10 +1325,10 @@ namespace JiroPackEditor
             PanelTJD.Controls.Add(label26);
             PanelTJD.Font = new Font("MS UI Gothic", 9F);
             PanelTJD.ForeColor = SystemColors.ControlText;
-            PanelTJD.Location = new Point(0, 241);
+            PanelTJD.Location = new Point(0, 275);
             PanelTJD.Margin = new Padding(4);
             PanelTJD.Name = "PanelTJD";
-            PanelTJD.Size = new Size(649, 173);
+            PanelTJD.Size = new Size(649, 168);
             PanelTJD.TabIndex = 28;
             // 
             // label5
@@ -1508,7 +1592,7 @@ namespace JiroPackEditor
             // 
             BtTJDforMJE.Anchor = AnchorStyles.Right;
             BtTJDforMJE.Font = new Font("MS UI Gothic", 9F);
-            BtTJDforMJE.Location = new Point(503, 98);
+            BtTJDforMJE.Location = new Point(503, 96);
             BtTJDforMJE.Margin = new Padding(2);
             BtTJDforMJE.Name = "BtTJDforMJE";
             BtTJDforMJE.Size = new Size(139, 56);
@@ -1565,7 +1649,7 @@ namespace JiroPackEditor
             // 
             LbNotesCount3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbNotesCount3.Font = new Font("MS UI Gothic", 9F);
-            LbNotesCount3.Location = new Point(506, 150);
+            LbNotesCount3.Location = new Point(506, 158);
             LbNotesCount3.Margin = new Padding(4, 0, 4, 0);
             LbNotesCount3.Name = "LbNotesCount3";
             LbNotesCount3.Size = new Size(61, 20);
@@ -1577,7 +1661,7 @@ namespace JiroPackEditor
             // 
             LbNotesCount2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbNotesCount2.Font = new Font("MS UI Gothic", 9F);
-            LbNotesCount2.Location = new Point(506, 122);
+            LbNotesCount2.Location = new Point(506, 128);
             LbNotesCount2.Margin = new Padding(4, 0, 4, 0);
             LbNotesCount2.Name = "LbNotesCount2";
             LbNotesCount2.Size = new Size(61, 20);
@@ -1589,7 +1673,7 @@ namespace JiroPackEditor
             // 
             LbNotesCount1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbNotesCount1.Font = new Font("MS UI Gothic", 9F);
-            LbNotesCount1.Location = new Point(506, 94);
+            LbNotesCount1.Location = new Point(506, 98);
             LbNotesCount1.Margin = new Padding(4, 0, 4, 0);
             LbNotesCount1.Name = "LbNotesCount1";
             LbNotesCount1.Size = new Size(61, 20);
@@ -1602,7 +1686,7 @@ namespace JiroPackEditor
             label9.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label9.AutoSize = true;
             label9.Font = new Font("MS UI Gothic", 9F);
-            label9.Location = new Point(515, 67);
+            label9.Location = new Point(515, 71);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(44, 12);
@@ -1613,39 +1697,39 @@ namespace JiroPackEditor
             // 
             TbTJA3.BackColor = Color.White;
             TbTJA3.Font = new Font("MS UI Gothic", 9F);
-            TbTJA3.Location = new Point(63, 152);
+            TbTJA3.Location = new Point(105, 159);
             TbTJA3.Margin = new Padding(4);
             TbTJA3.Name = "TbTJA3";
             TbTJA3.ReadOnly = true;
-            TbTJA3.Size = new Size(297, 19);
+            TbTJA3.Size = new Size(255, 19);
             TbTJA3.TabIndex = 14;
             // 
             // TbTJA2
             // 
             TbTJA2.BackColor = Color.White;
             TbTJA2.Font = new Font("MS UI Gothic", 9F);
-            TbTJA2.Location = new Point(63, 121);
+            TbTJA2.Location = new Point(105, 129);
             TbTJA2.Margin = new Padding(4);
             TbTJA2.Name = "TbTJA2";
             TbTJA2.ReadOnly = true;
-            TbTJA2.Size = new Size(297, 19);
+            TbTJA2.Size = new Size(255, 19);
             TbTJA2.TabIndex = 13;
             // 
             // TbTJA1
             // 
             TbTJA1.BackColor = Color.White;
             TbTJA1.Font = new Font("MS UI Gothic", 9F);
-            TbTJA1.Location = new Point(64, 94);
+            TbTJA1.Location = new Point(105, 99);
             TbTJA1.Margin = new Padding(4);
             TbTJA1.Name = "TbTJA1";
             TbTJA1.ReadOnly = true;
-            TbTJA1.Size = new Size(297, 19);
+            TbTJA1.Size = new Size(255, 19);
             TbTJA1.TabIndex = 12;
             // 
             // BtSongSelect3
             // 
             BtSongSelect3.Font = new Font("MS UI Gothic", 9F);
-            BtSongSelect3.Location = new Point(369, 148);
+            BtSongSelect3.Location = new Point(369, 156);
             BtSongSelect3.Margin = new Padding(4);
             BtSongSelect3.Name = "BtSongSelect3";
             BtSongSelect3.Size = new Size(60, 24);
@@ -1656,9 +1740,8 @@ namespace JiroPackEditor
             // 
             // Lb3rd
             // 
-            Lb3rd.AutoSize = true;
             Lb3rd.Font = new Font("MS UI Gothic", 9F);
-            Lb3rd.Location = new Point(9, 156);
+            Lb3rd.Location = new Point(58, 164);
             Lb3rd.Margin = new Padding(4, 0, 4, 0);
             Lb3rd.Name = "Lb3rd";
             Lb3rd.Size = new Size(35, 12);
@@ -1668,7 +1751,7 @@ namespace JiroPackEditor
             // BtSongSelect2
             // 
             BtSongSelect2.Font = new Font("MS UI Gothic", 9F);
-            BtSongSelect2.Location = new Point(369, 119);
+            BtSongSelect2.Location = new Point(369, 126);
             BtSongSelect2.Margin = new Padding(4);
             BtSongSelect2.Name = "BtSongSelect2";
             BtSongSelect2.Size = new Size(60, 24);
@@ -1679,9 +1762,8 @@ namespace JiroPackEditor
             // 
             // Lb2nd
             // 
-            Lb2nd.AutoSize = true;
             Lb2nd.Font = new Font("MS UI Gothic", 9F);
-            Lb2nd.Location = new Point(9, 125);
+            Lb2nd.Location = new Point(58, 134);
             Lb2nd.Margin = new Padding(4, 0, 4, 0);
             Lb2nd.Name = "Lb2nd";
             Lb2nd.Size = new Size(35, 12);
@@ -1691,7 +1773,7 @@ namespace JiroPackEditor
             // BtSongSelect1
             // 
             BtSongSelect1.Font = new Font("MS UI Gothic", 9F);
-            BtSongSelect1.Location = new Point(369, 91);
+            BtSongSelect1.Location = new Point(369, 96);
             BtSongSelect1.Margin = new Padding(4);
             BtSongSelect1.Name = "BtSongSelect1";
             BtSongSelect1.Size = new Size(60, 24);
@@ -1702,9 +1784,8 @@ namespace JiroPackEditor
             // 
             // Lb1st
             // 
-            Lb1st.AutoSize = true;
             Lb1st.Font = new Font("MS UI Gothic", 9F);
-            Lb1st.Location = new Point(9, 98);
+            Lb1st.Location = new Point(58, 104);
             Lb1st.Margin = new Padding(4, 0, 4, 0);
             Lb1st.Name = "Lb1st";
             Lb1st.Size = new Size(35, 12);
@@ -1715,7 +1796,7 @@ namespace JiroPackEditor
             // 
             label15.AutoSize = true;
             label15.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label15.Location = new Point(8, 57);
+            label15.Location = new Point(8, 42);
             label15.Margin = new Padding(4, 0, 4, 0);
             label15.Name = "label15";
             label15.Size = new Size(423, 16);
@@ -1745,7 +1826,7 @@ namespace JiroPackEditor
             // 
             LbNotesCount4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LbNotesCount4.Font = new Font("MS UI Gothic", 9F);
-            LbNotesCount4.Location = new Point(506, 178);
+            LbNotesCount4.Location = new Point(506, 188);
             LbNotesCount4.Margin = new Padding(4, 0, 4, 0);
             LbNotesCount4.Name = "LbNotesCount4";
             LbNotesCount4.Size = new Size(61, 20);
@@ -1813,15 +1894,6 @@ namespace JiroPackEditor
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(244, 69);
-            label12.Name = "label12";
-            label12.Size = new Size(41, 12);
-            label12.TabIndex = 29;
-            label12.Text = "label12";
             // 
             // Form1
             // 
@@ -2025,6 +2097,11 @@ namespace JiroPackEditor
         private PictureBox pictureBox1;
         private PictureBox PbClose;
         private PictureBox PbMinimum;
+        private CheckBox CbTitleUnVisible1;
+        private CheckBox CbTitleUnVisible4;
+        private CheckBox CbTitleUnVisible3;
+        private CheckBox CbTitleUnVisible2;
+        private CheckBox CbTitleUnVisible5;
         private Label label12;
     }
 }

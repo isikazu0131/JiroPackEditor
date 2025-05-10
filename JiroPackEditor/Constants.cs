@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,7 +26,15 @@ namespace JiroPackEditor {
             /// </summary>
             public const string Version = "V2.1.0";
 
-            public const string GitHubLink = "https://github.com/isikazu0131/JiroCourseEditor";
+            /// <summary>
+            /// バージョンを表す6桁番号
+            /// </summary>
+            public const int VersionInt = 020100;
+
+            /// <summary>
+            /// GitHubリンク
+            /// </summary>
+            public const string GitHubLink = "https://github.com/isikazu0131/JiroPackEditor";
         }
 
         /// <summary>
