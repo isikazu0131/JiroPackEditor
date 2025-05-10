@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\jiropackeditor.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\jiropackeditor.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\jiropackeditor.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\jiropackeditor.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\tja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\tja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\genreini.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\genreini.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -17,14 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\tjc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\tjc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\tja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\tja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\genreini.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|solutionrelative:jiropackeditor\\genreini.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{739455A9-4BE5-439A-8EF6-3CC2143F063A}|JiroPackEditor\\JiroPackEditor.csproj|d:\\user\\isikazu0131\\documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\packeditor\\jiropackeditor\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,11 +58,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 231,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "TJP.cs",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\TJP.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\TJP.cs",
@@ -76,7 +84,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
+              "Title": "JiroPackEditor",
+              "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\JiroPackEditor.csproj",
+              "RelativeDocumentMoniker": "JiroPackEditor\\JiroPackEditor.csproj",
+              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\JiroPackEditor.csproj*",
+              "RelativeToolTip": "JiroPackEditor\\JiroPackEditor.csproj*",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-10T21:31:31.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JiroPackEditor",
+              "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\JiroPackEditor.csproj",
+              "RelativeDocumentMoniker": "JiroPackEditor\\JiroPackEditor.csproj",
+              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\JiroPackEditor.csproj",
+              "RelativeToolTip": "JiroPackEditor\\JiroPackEditor.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-10T21:32:43.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Constants.cs",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\Constants.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\Constants.cs",
@@ -89,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "TJA.cs",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\TJA.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\TJA.cs",
@@ -102,7 +135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "TJC.cs",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\TJC.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\TJC.cs",
@@ -115,20 +148,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\Form1.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\Form1.cs",
-              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\Form1.cs*",
-              "RelativeToolTip": "JiroPackEditor\\Form1.cs*",
-              "ViewState": "AQIAALsEAAAAAAAAAADwv9MEAAAnAAAA",
+              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\Form1.cs",
+              "RelativeToolTip": "JiroPackEditor\\Form1.cs",
+              "ViewState": "AQIAAMQEAAAAAAAAAADwv9MEAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T19:25:07.255Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "GenreIni.cs",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\GenreIni.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\GenreIni.cs",
@@ -141,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "FileDrop.cs",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\FileDrop.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\FileDrop.cs",
@@ -154,30 +187,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\Form1.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\Form1.cs",
-              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]*",
-              "RelativeToolTip": "JiroPackEditor\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]*",
+              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "JiroPackEditor\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-08T07:39:53.488Z",
               "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AppInfoDialog.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentIndex": 10,
+              "Title": "AppInfoDialog.cs [Design]",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\AppInfoDialog.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\AppInfoDialog.cs",
-              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\AppInfoDialog.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "JiroPackEditor\\AppInfoDialog.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "ToolTip": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\AppInfoDialog.cs [Design]",
+              "RelativeToolTip": "JiroPackEditor\\AppInfoDialog.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T13:32:29.801Z"
+              "WhenOpened": "2025-03-24T13:32:29.801Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "AppInfoDialog.Designer.cs",
               "DocumentMoniker": "D:\\User\\isikazu0131\\Documents\\\u6687\u3064\u3076\u3057\u30D7\u30ED\u30B0\u30E9\u30E0\\0 \u6B21\u90CE\u5411\u3051\u5927\u898F\u6A21\u30A2\u30D7\u30EA\\PackEditor\\JiroPackEditor\\AppInfoDialog.Designer.cs",
               "RelativeDocumentMoniker": "JiroPackEditor\\AppInfoDialog.Designer.cs",

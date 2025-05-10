@@ -6,3 +6,5 @@
 *.pdb
 *.cache
 /JiroPackEditor/obj
+/JiroPackEditor/obj
+*.cache
