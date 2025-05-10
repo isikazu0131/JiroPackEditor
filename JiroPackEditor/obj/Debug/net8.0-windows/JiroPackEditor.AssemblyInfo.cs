@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JiroPackEditor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3534f6fb4711bcef5bcb1ae19e318303612dfb33")]
 [assembly: System.Reflection.AssemblyProductAttribute("JiroPackEditor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JiroPackEditor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

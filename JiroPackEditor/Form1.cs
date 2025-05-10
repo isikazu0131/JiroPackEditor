@@ -95,6 +95,9 @@ namespace JiroPackEditor
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Shift-jisが読み込めない対策
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             // アプリケーションの実行時にカレントディレクトリを変更する
             string appDirectory = Path.GetDirectoryName(Application.ExecutablePath);
             Directory.SetCurrentDirectory(appDirectory);
@@ -540,6 +543,10 @@ namespace JiroPackEditor
             // UpdateThresholdByRatio();
             CbUseCondition.Checked = nowTJC.isTJDEnabled;
             CbTitleUnVisible1.Checked = nowTJC.IsTitleHideList[0];
+            CbTitleUnVisible2.Checked = nowTJC.IsTitleHideList[1];
+            CbTitleUnVisible3.Checked = nowTJC.IsTitleHideList[2];
+            CbTitleUnVisible4.Checked = nowTJC.IsTitleHideList[3];
+            CbTitleUnVisible5.Checked = nowTJC.IsTitleHideList[4];
             TbCourseName.Text = nowTJC.Name;
             LbCourseNotes.Text = nowTJC.TotalNoteCount().ToString();
             LbCourseTime.Text = ToMinSec(nowTJC.TotalOggTime());
@@ -1217,7 +1224,7 @@ namespace JiroPackEditor
                 else if (NmNumbering.Value >= 11)
                 {
                     NmRatio2.Value = 10;
-                    NmRatio3.Value = 2;
+                    NmRatio3.Value = (decimal)1.5;
                 }
             }
             // 金合格の場合

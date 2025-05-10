@@ -30,7 +30,7 @@ namespace JiroPackEditor
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            TreeNode treeNode5 = new TreeNode("新しいパック");
+            TreeNode treeNode1 = new TreeNode("新しいパック");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             TrPack = new TreeView();
             BtCreate = new Button();
@@ -205,9 +205,9 @@ namespace JiroPackEditor
             TrPack.Location = new Point(8, 61);
             TrPack.Margin = new Padding(2);
             TrPack.Name = "TrPack";
-            treeNode5.Name = "PackNode";
-            treeNode5.Text = "新しいパック";
-            TrPack.Nodes.AddRange(new TreeNode[] { treeNode5 });
+            treeNode1.Name = "PackNode";
+            treeNode1.Text = "新しいパック";
+            TrPack.Nodes.AddRange(new TreeNode[] { treeNode1 });
             TrPack.Size = new Size(335, 628);
             TrPack.TabIndex = 0;
             TrPack.AfterSelect += TrPack_AfterSelect;
@@ -246,7 +246,7 @@ namespace JiroPackEditor
             PanelPack.Location = new Point(349, 61);
             PanelPack.Margin = new Padding(2);
             PanelPack.Name = "PanelPack";
-            PanelPack.Size = new Size(649, 621);
+            PanelPack.Size = new Size(649, 626);
             PanelPack.TabIndex = 2;
             // 
             // panel2
@@ -265,7 +265,7 @@ namespace JiroPackEditor
             panel2.Location = new Point(0, 380);
             panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(649, 248);
+            panel2.Size = new Size(649, 253);
             panel2.TabIndex = 22;
             // 
             // LbTJPMapsCount
@@ -434,7 +434,7 @@ namespace JiroPackEditor
             // 
             label6.AutoSize = true;
             label6.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
-            label6.Location = new Point(10, 116);
+            label6.Location = new Point(10, 117);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(70, 12);
@@ -471,7 +471,7 @@ namespace JiroPackEditor
             // 
             label3.AutoSize = true;
             label3.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
-            label3.Location = new Point(10, 73);
+            label3.Location = new Point(10, 76);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(46, 12);

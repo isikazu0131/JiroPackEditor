@@ -181,6 +181,7 @@ namespace JiroPackEditor {
             TJC tjc = new TJC();
             tjc.Name = $"Level {Level}";
             tjc.Number = Level;
+            tjc.IsTitleHideList = new List<bool> { true, true, true, true, true };
             // フォルダカラー変更
             switch (Level) {
                 case 1:

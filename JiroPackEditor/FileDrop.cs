@@ -54,7 +54,7 @@ namespace JiroPackEditor {
 			};
 
 			Marshal.StructureToPtr(dropFiles, hGlobal, true);
-			var fuga = hGlobal.ToInt32();
+			var fuga = hGlobal.ToInt64();
 			var hoge = fuga + dropFiles.pFiles;
 			Marshal.Copy(names, 0, new IntPtr(hoge), names.Length);
 
