@@ -104,5 +104,6 @@ namespace JiroPackEditor {
             if (line.Contains(selectchar) == false) return line;
             return line.Substring(0, line.IndexOf(selectchar));
         }
+
     }
 }

@@ -163,6 +163,11 @@ namespace JiroPackEditor {
         /// <returns></returns>
         private long GetDirectorySize(DirectoryInfo dInfo) {
             long totalSize = 0;
+            if(dInfo.Exists == false)
+            {
+                //ErrorDialog.Show($"次のフォルダが見つかりませんでした。：{dInfo.FullName}");
+                return 0;
+            }
             if (dInfo != null) {
                 var fInfos = dInfo.GetFiles();
                 foreach (var f in fInfos) {
@@ -368,7 +373,7 @@ namespace JiroPackEditor {
         /// tjcの内容をエクスポートし、tjaを移動させます
         /// </summary>
         /// <param name="packDInfo">パックフォルダ</param>
-        public bool Export(string tjpName, DirectoryInfo packDInfo) {
+        public bool Export(string tjpName, DirectoryInfo packDInfo, SongFolderMode folderMode, List<double> Levels = null) {
             try {
                 
                 // 前バージョン対策
@@ -388,6 +393,8 @@ namespace JiroPackEditor {
                 string tjcPath = Path.Combine(packDInfo.FullName,
                                               Constants.DirectoryName.Course,
                                               numberedTJCName + Constants.Extention.TJC);
+
+                var level = 0.0;
                 using (StreamWriter sw = new StreamWriter(tjcPath, false, Encoding.GetEncoding("Shift_jis"))) {
                     // tjcに書き込む内容
                     List<string> lines = new List<string>();
@@ -397,17 +404,42 @@ namespace JiroPackEditor {
 
                     lines.Add($"TITLE:{this.Name}\r\n" +
                               $"LIFE:{this.Life}\r\n");
-
                     foreach (var tja in this.TJAs.Select((value, index) => (value, index))) {
                         if (tja.value == null) continue;
                         // tjaの相対パスを取得して書いていく
+                        string relativePath = "";
                         // (パック名)\課題曲\(コース名)\(曲番号)_(拡張子なしtja名)\(tja名)
-                        string relativePath = Path.Combine(tjpName,
-                                                           Constants.DirectoryName.Songs,
-                                                           numberedTJCName,
-                                                           // 末尾に「.」や「 」のあるフォルダは作成できないため、削除しておく
-                                                           $"{tja.index}_" + tja.value.FileName.Replace(Path.GetExtension(tja.value.FileName), "").TrimEnd('.', ' '),
-                                                           tja.value.FileName);
+                        switch (folderMode)
+                        {
+                            case SongFolderMode.SortByCourse:
+                                relativePath = Path.Combine(tjpName,
+                                       Constants.DirectoryName.Songs,
+                                       numberedTJCName,
+                                       // 末尾に「.」や「 」のあるフォルダは作成できないため、削除しておく
+                                       $"{tja.index}_" + tja.value.FileName.Replace(Path.GetExtension(tja.value.FileName), "").TrimEnd('.', ' '),
+                                       tja.value.FileName);
+                                break;
+                            case SongFolderMode.SortByLevel:
+                                level = Math.Floor(tja.value.LEVEL);
+                                relativePath = Path.Combine(tjpName,
+                                       Constants.DirectoryName.Songs,
+                                       $"☆{level:00}",
+                                       // 末尾に「.」や「 」のあるフォルダは作成できないため、削除しておく
+                                       tja.value.FileName.Replace(Path.GetExtension(tja.value.FileName), "").TrimEnd('.', ' '),
+                                       tja.value.FileName);
+                                break;
+                            case SongFolderMode.NoSort:
+                                relativePath = Path.Combine(tjpName,
+                                       Constants.DirectoryName.Songs,
+                                       // 末尾に「.」や「 」のあるフォルダは作成できないため、削除しておく
+                                       tja.value.FileName.Replace(Path.GetExtension(tja.value.FileName), "").TrimEnd('.', ' '),
+                                       tja.value.FileName);
+                                break;
+                            default:
+                                relativePath = "";
+                                break;
+                        }
+
                         lines.Add($"SONG:{relativePath}");
                     }
 
@@ -416,26 +448,59 @@ namespace JiroPackEditor {
                         sw.WriteLine(line);
                     }
                 }
-
-                // 課題曲＞コース名フォルダ作成
-                // (エクスポート先)\(パック名)\課題曲\(コース名)
-                string levelDirectory = Path.Combine(packDInfo.FullName,
-                                                    Constants.DirectoryName.Songs,
-                                                    numberedTJCName
-                                                    );
-                DirectoryInfo songDInfo = Directory.CreateDirectory(levelDirectory);
-
+                DirectoryInfo songDInfo = null;
                 // tjaを1つずつコピーする
                 foreach (var tja in this.TJAs.Select((value, index) => (value, index))) {
+                    // 課題曲＞コース名フォルダ作成
+                    // (エクスポート先)\(パック名)\課題曲\(コース名)
+                    string levelDirectory = "";
+                    string outputpath = "";
                     if (tja.value == null) continue;
+                    switch (folderMode)
+                    {
+                        case SongFolderMode.SortByCourse:
+                            levelDirectory = Path.Combine(packDInfo.FullName,
+                                                        Constants.DirectoryName.Songs,
+                                                        numberedTJCName
+                                                        );                    
+                            // tja一式出力先フォルダ
+                            // (エクスポート先)\(パック名)\課題曲\(コース名)\(コース内番号)_(拡張子なしtja名)
+                            outputpath = Path.Combine(levelDirectory,
+                                                             // 末尾に「.」や「 」のあるフォルダは作成できないため、削除しておく
+                                                             $"{tja.index}_" + Path.GetFileName(tja.value.FullName).Replace(Path.GetExtension(tja.value.FileName), "").TrimEnd('.', ' ')
+                                                             );
+                            break;
+                        case SongFolderMode.SortByLevel:
+                            level = Math.Floor(tja.value.LEVEL);
+                            levelDirectory = Path.Combine(packDInfo.FullName,
+                                                        Constants.DirectoryName.Songs,
+                                                        $"☆{level:00}"
+                                                        );
+                            // tja一式出力先フォルダ
+                            // (エクスポート先)\(パック名)\課題曲\(コース名)\(コース内番号)_(拡張子なしtja名)
+                            outputpath = Path.Combine(levelDirectory,
+                                                             // 末尾に「.」や「 」のあるフォルダは作成できないため、削除しておく
+                                                             Path.GetFileName(tja.value.FullName).Replace(Path.GetExtension(tja.value.FileName), "").TrimEnd('.', ' ')
+                                                             );
+                            break;
+                        case SongFolderMode.NoSort:
+                            levelDirectory = Path.Combine(packDInfo.FullName,
+                                                        Constants.DirectoryName.Songs
+                                                        );
+                            // tja一式出力先フォルダ
+                            // (エクスポート先)\(パック名)\課題曲\(コース名)\(コース内番号)_(拡張子なしtja名)
+                            outputpath = Path.Combine(levelDirectory,
+                                                             // 末尾に「.」や「 」のあるフォルダは作成できないため、削除しておく
+                                                             Path.GetFileName(tja.value.FullName).Replace(Path.GetExtension(tja.value.FileName), "").TrimEnd('.', ' ')
+                                                             );
+                            break;
+                        default:
+                            break;
+                    }
+                    songDInfo = Directory.CreateDirectory(levelDirectory);
                     var oggInfo = new FileInfo(tja.value.FullName.Replace(tja.value.FileName, tja.value.WAVE));
                     var tjaInfo = new FileInfo(tja.value.FullName);
-                    // tja一式出力先フォルダ
-                    // (エクスポート先)\(パック名)\課題曲\(コース名)\(コース内番号)_(拡張子なしtja名)
-                    string outputpath = Path.Combine(levelDirectory,
-                                                     // 末尾に「.」や「 」のあるフォルダは作成できないため、削除しておく
-                                                     $"{tja.index}_" + Path.GetFileName(tja.value.FullName).Replace(Path.GetExtension(tja.value.FileName), "").TrimEnd('.', ' ')
-                                                     );
+
                     Directory.CreateDirectory(outputpath);
 
                     // 出力tja
@@ -451,7 +516,20 @@ namespace JiroPackEditor {
                 }
 
                 // Genre.iniをエクスポート
-                GenreIni.Write(songDInfo.FullName, this.Name, LevelBackColor, LevelForeColor);
+                switch (folderMode)
+                {
+                    case SongFolderMode.SortByCourse:
+                        GenreIni.Write(songDInfo.FullName, this.Name, LevelBackColor, LevelForeColor);
+                        break;
+                    case SongFolderMode.SortByLevel:
+                        string fColor = getLevelFolderColor(level, Levels);
+                        GenreIni.Write(songDInfo.FullName, $"☆{level.ToString()}", fColor, "#FFFFFF");
+                        break;
+                    case SongFolderMode.NoSort:
+                        break;
+                    default:
+                        break;
+                }
 
                 DirectoryInfo tjdDInfo = new DirectoryInfo(Path.Combine(packDInfo.FullName, Constants.DirectoryName.tjd));
                 // TJDのエクスポート
@@ -472,6 +550,13 @@ namespace JiroPackEditor {
                 return false;
             }
 
+        }
+
+        private string getLevelFolderColor(double Level, List<double> Levels)
+        {
+            int index = Levels.IndexOf(Level);
+            Color color = Color.FromArgb(200 - index * 30, 200 - index * 30, 200 - index * 30);
+            return ColorInfo.GetColorCode(color);
         }
 
         /// <summary>

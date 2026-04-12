@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -139,6 +140,8 @@ namespace JiroPackEditor
             PanelPack.Enabled = true;
             PanelCourse.Visible = false;
             PanelCourse.Enabled = false;
+
+            DrawSampleViewNowTJP();
         }
 
         /// <summary>
@@ -272,6 +275,7 @@ namespace JiroPackEditor
                 nowTJP.Name = TbPackName.Text;
                 ChangeSaveStatus();
             }
+            DrawSampleViewNowTJP();
         }
 
         /// <summary>
@@ -295,6 +299,8 @@ namespace JiroPackEditor
 
             }
             ChangeSaveStatus();
+            DrawSampleViewNowTJP();
+
         }
 
         /// <summary>
@@ -305,13 +311,35 @@ namespace JiroPackEditor
         private string GetNewCourseNum(string name)
         {
             List<TreeNode> nodes = new List<TreeNode>();
-            foreach (TreeNode node in TrPack.SelectedNode.Nodes)
+            foreach (TreeNode node in TrPack.Nodes[0].Nodes)
             {
                 nodes.Add(node);
             }
-            int num = nodes.Count(x => x.Text.Contains(name)) + 1;
 
-            return $"({num})";
+            int max = 0;
+
+            foreach (var node in nodes)
+            {
+                var text = node.Text;
+
+                // 完全一致（aaa）
+                if (text == name)
+                {
+                    max = Math.Max(max, 0);
+                    continue;
+                }
+
+                // aaa(数字) のみ対象
+                var match = Regex.Match(text, $"^{Regex.Escape(name)}\\((\\d+)\\)$");
+
+                if (match.Success)
+                {
+                    int num = int.Parse(match.Groups[1].Value);
+                    max = Math.Max(max, num);
+                }
+            }
+
+            return $"({max + 1})";
         }
 
         /// <summary>
@@ -327,6 +355,8 @@ namespace JiroPackEditor
             ChangeSaveStatus();
             // コース数だけ変える
             LbTJCCount.Text = nowTJP.TJCs.Count().ToString();
+            DrawSampleViewNowTJP();
+
         }
 
         /// <summary>
@@ -360,6 +390,7 @@ namespace JiroPackEditor
 
                 ChangeSaveStatus();
             }
+            DrawSampleViewNowTJP();
         }
 
         /// <summary>
@@ -374,7 +405,93 @@ namespace JiroPackEditor
             {
                 TrPack.Nodes[0].Nodes.Add(tjc.Name);
             }
+
             FormTitleChange();
+        }
+
+        /// <summary>
+        /// 現在のTJPを次郎内サンプルTreeViewに描画します
+        /// </summary>
+        private void DrawSampleViewNowTJP()
+        {
+            TrJiroPreview.Nodes.Clear();
+            TrJiroPreview.Nodes.Add(nowTJP.Name);
+            TrJiroPreview.Nodes[0].BackColor = ColorInfo.GetColor(nowTJP.PackFolderBackColor);
+            TrJiroPreview.Nodes[0].ForeColor = ColorInfo.GetColor(nowTJP.PackFolderForeColor);
+            var SongFolderModes = new bool[] { RbSongFolderMode1.Checked, RbSongFolderMode2.Checked, RbSongFolderMode3.Checked };
+
+            TrJiroPreview.Nodes[0].Nodes.Add(TbPackFolderName.Text);
+            TrJiroPreview.Nodes[0].Nodes[0].BackColor = ColorInfo.GetColor(nowTJP.CourseFolderBackColor);
+            TrJiroPreview.Nodes[0].Nodes[0].ForeColor = ColorInfo.GetColor(nowTJP.CourseFolderForeColor);
+            TrJiroPreview.Nodes[0].Nodes.Add(TbSongFolderName.Text);
+            TrJiroPreview.Nodes[0].Nodes[1].BackColor = ColorInfo.GetColor(nowTJP.SongFolderBackColor);
+            TrJiroPreview.Nodes[0].Nodes[1].ForeColor = ColorInfo.GetColor(nowTJP.SongFolderForeColor);
+
+            foreach (var tjc in nowTJP.TJCs.Select((v, i) => (v, i)))
+            {
+                TrJiroPreview.Nodes[0].Nodes[0].Nodes.Add(tjc.v.Name);
+                TrJiroPreview.Nodes[0].Nodes[0].Nodes[tjc.i].BackColor = ColorInfo.GetColor(nowTJP.CourseFolderBackColor);
+                TrJiroPreview.Nodes[0].Nodes[0].Nodes[tjc.i].ForeColor = ColorInfo.GetColor(nowTJP.CourseFolderForeColor);
+            }
+
+            // コースごとにフォルダ分け
+            if (SongFolderModes[0] == true)
+            {
+                foreach(var tjc in nowTJP.TJCs.Select((v, i) => (v, i)))
+                {
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes.Add(tjc.v.Name);
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].BackColor = ColorInfo.GetColor(tjc.v.LevelBackColor);
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].ForeColor = ColorInfo.GetColor(tjc.v.LevelForeColor);
+                    foreach(var tja in tjc.v.TJAs.Select((v, i)=>(v, i))){
+                        if (tja.v == null) continue;
+                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].Nodes.Add(tja.v.TITLE);
+                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].Nodes[tja.i].BackColor = ColorInfo.GetColor(tjc.v.LevelBackColor);
+                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].Nodes[tja.i].ForeColor = ColorInfo.GetColor(tjc.v.LevelForeColor);
+                    }
+                }
+            }
+            // 難易度ごとにフォルダ分け
+            else if (SongFolderModes[1] == true)
+            {
+                var TJAs = new List<TJA>();
+                // 一旦TJA内のtjaを列挙
+                foreach(var tjc in nowTJP.TJCs)
+                {
+                    TJAs.AddRange(tjc.TJAs.Where(x => x != null));
+                }
+                // 難易度（整数部分）をリスト化
+                List<double> Levels = TJAs.Select(x => Math.Floor(x.LEVEL)).Distinct().ToList();
+                foreach(var level in Levels.Select((v, i) => (v, i)))
+                {
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes.Add($"☆{level.v}");
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes[level.i].BackColor = Color.FromArgb(200 - level.i * 25, 200 - level.i * 25, 200 - level.i * 25);
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes[level.i].ForeColor = Color.FromArgb(255, 255, 255);
+                    foreach (var tja in TJAs.Where(x => Math.Floor(x.LEVEL) == level.v).Select((v, i) => (v, i)))
+                    {
+                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[level.i].Nodes.Add(tja.v.TITLE);
+                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[level.i].Nodes[tja.i].BackColor = Color.FromArgb(200 - level.i * 25, 200 - level.i * 25, 200 - level.i * 25);
+                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[level.i].Nodes[tja.i].ForeColor = Color.FromArgb(255, 255, 255);
+                    }
+                }
+            }
+            // フォルダ分けしない
+            else if(SongFolderModes[2] == true)
+            {
+                var TJAs = new List<TJA>();
+                // 一旦TJA内のtjaを列挙
+                foreach (var tjc in nowTJP.TJCs)
+                {
+                    TJAs.AddRange(tjc.TJAs.Where(x => x != null));
+                }
+                foreach(var tja in TJAs.Select((v, i) => (v, i)))
+                {
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes.Add(tja.v.TITLE);
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes[tja.i].BackColor = ColorInfo.GetColor(nowTJP.SongFolderBackColor);
+                    TrJiroPreview.Nodes[0].Nodes[1].Nodes[tja.i].ForeColor = ColorInfo.GetColor(nowTJP.SongFolderForeColor);
+                }
+            }
+
+            TrJiroPreview.ExpandAll();
         }
 
         /// <summary>
@@ -408,12 +525,12 @@ namespace JiroPackEditor
         private void SetTJPInfoToView()
         {
             TbPackName.Text = nowTJP.Name;
-            LbPackColorView.BackColor = ColorInfo.GetColor(nowTJP.PackFolderBackColor);
-            LbPackColorView.ForeColor = ColorInfo.GetColor(nowTJP.PackFolderForeColor);
-            LbCourseColorView.BackColor = ColorInfo.GetColor(nowTJP.CourseFolderBackColor);
-            LbCourseColorView.ForeColor = ColorInfo.GetColor(nowTJP.CourseFolderForeColor);
-            LbSongColorView.BackColor = ColorInfo.GetColor(nowTJP.SongFolderBackColor);
-            LbSongColorView.ForeColor = ColorInfo.GetColor(nowTJP.SongFolderForeColor);
+            LbPackBackColorView.BackColor = ColorInfo.GetColor(nowTJP.PackFolderBackColor);
+            LbPackForeColorView.BackColor = ColorInfo.GetColor(nowTJP.PackFolderForeColor);
+            LbCourseBackColorView.BackColor = ColorInfo.GetColor(nowTJP.CourseFolderBackColor);
+            LbCourseForeColorView.BackColor = ColorInfo.GetColor(nowTJP.CourseFolderForeColor);
+            LbSongBackColorView.BackColor = ColorInfo.GetColor(nowTJP.SongFolderBackColor);
+            LbSongForeColorView.BackColor = ColorInfo.GetColor(nowTJP.SongFolderForeColor);
 
             // TJP情報
             LbTJPMapsCount.Text = nowTJP.TJCs.Sum(x => x.TJAs.Count(y => y != null)).ToString();
@@ -627,11 +744,18 @@ namespace JiroPackEditor
         {
             nowTJP = new TJP();
             nowTJP.Name = Constants.TJPDefault.Name;
+            nowTJP.PackFolderBackColor = ColorInfo.GetColorCode(Constants.TJPDefault.PackBackColor);
+            nowTJP.PackFolderForeColor = ColorInfo.GetColorCode(Constants.TJPDefault.PackForeColor);
+            nowTJP.CourseFolderBackColor = ColorInfo.GetColorCode(Constants.TJPDefault.CourseBackColor);
+            nowTJP.CourseFolderForeColor = ColorInfo.GetColorCode(Constants.TJPDefault.CourseForeColor);
+            nowTJP.SongFolderBackColor = ColorInfo.GetColorCode(Constants.TJPDefault.SongBackColor);
+            nowTJP.SongFolderForeColor = ColorInfo.GetColorCode(Constants.TJPDefault.SongForeColor);
             isSaved = true;
             DrawTreeViewNowTJP();
             TrPack.SelectedNode = TrPack.Nodes[0];
 
             ChangeMenuByTrTJPSelectedNode(TrPack.Nodes[0]);
+            DrawSampleViewNowTJP();
         }
 
         /// <summary>
@@ -826,6 +950,7 @@ namespace JiroPackEditor
                     OpenPackFile();
                 }
             }
+            DrawSampleViewNowTJP();
         }
 
         /// <summary>
@@ -959,81 +1084,82 @@ namespace JiroPackEditor
 
         #endregion
 
-        /// <summary>
-        /// 右クリックした際に右クリックしたノードを選択状態にする
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TrPack_MouseDown(object sender, MouseEventArgs e)
+        #region Genre.iniカラー変更
+
+        private void LbPackBackColorView_DoubleClick(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                var clickNode = TrPack.GetNodeAt(e.X, e.Y);
-                if (clickNode != null)
-                {
-                    TrPack.SelectedNode = clickNode;
-                }
-            }
+            FolderColorChange(0);
+            LbPackBackColorView.BackColor = ColorInfo.GetColor(nowTJP.PackFolderBackColor);
+            DrawSampleViewNowTJP();
         }
 
-        #region Genre.iniカラー変更
-        /// <summary>
-        /// パックのフォルダカラー変更
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtChangePackColor_Click(object sender, EventArgs e)
+        private void LbCourseBackColorView_DoubleClick(object sender, EventArgs e)
         {
+            FolderColorChange(2);
+            LbCourseBackColorView.BackColor = ColorInfo.GetColor(nowTJP.CourseFolderBackColor);
+            DrawSampleViewNowTJP();
+        }
+
+        private void LbSongBackColorView_DoubleClick(object sender, EventArgs e)
+        {
+            FolderColorChange(4);
+            LbSongBackColorView.BackColor = ColorInfo.GetColor(nowTJP.SongFolderBackColor);
+            DrawSampleViewNowTJP();
+        }
+
+        private void LbPackForeColorView_DoubleClick(object sender, EventArgs e)
+        {
+            FolderColorChange(1);
+            LbPackForeColorView.BackColor = ColorInfo.GetColor(nowTJP.PackFolderForeColor);
+            DrawSampleViewNowTJP();
+        }
+
+        private void LbCourseForeColorView_DoubleClick(object sender, EventArgs e)
+        {
+            FolderColorChange(3);
+            LbCourseForeColorView.BackColor = ColorInfo.GetColor(nowTJP.CourseFolderForeColor);
+            DrawSampleViewNowTJP();
+        }
+
+        private void LbSongForeColorView_DoubleClick(object sender, EventArgs e)
+        {
+            FolderColorChange(5);
+            LbSongForeColorView.BackColor = ColorInfo.GetColor(nowTJP.SongFolderForeColor);
+            DrawSampleViewNowTJP();
+        }
+
+        private void FolderColorChange(int num)
+        {
+            ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                LbPackColorView.BackColor = colorDialog.Color;
+                switch (num)
+                {
+                    case 0:
+                        nowTJP.PackFolderBackColor = ColorInfo.GetColorCode(colorDialog.Color);
+                        break;
+                    case 1:
+                        nowTJP.PackFolderForeColor = ColorInfo.GetColorCode(colorDialog.Color);
+                        break;
+                    case 2:
+                        nowTJP.CourseFolderBackColor = ColorInfo.GetColorCode(colorDialog.Color);
+                        break;
+                    case 3:
+                        nowTJP.CourseFolderForeColor = ColorInfo.GetColorCode(colorDialog.Color);
+                        break;
+                    case 4:
+                        nowTJP.SongFolderBackColor = ColorInfo.GetColorCode(colorDialog.Color);
+                        break;
+                    case 5:
+                        nowTJP.SongFolderForeColor = ColorInfo.GetColorCode(colorDialog.Color);
+                        break;
+                    default:
+                        break;
+                }
             }
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                LbPackColorView.ForeColor = colorDialog.Color;
-            }
-            nowTJP.PackFolderBackColor = ColorInfo.GetColorCode(LbPackColorView.BackColor);
-            nowTJP.PackFolderForeColor = ColorInfo.GetColorCode(LbPackColorView.ForeColor);
             ChangeSaveStatus();
         }
-        /// <summary>
-        /// TJCフォルダカラー変更
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtChangeCourseColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                LbCourseColorView.BackColor = colorDialog.Color;
-            }
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                LbCourseColorView.ForeColor = colorDialog.Color;
-            }
-            nowTJP.CourseFolderBackColor = ColorInfo.GetColorCode(LbCourseColorView.BackColor);
-            nowTJP.CourseFolderForeColor = ColorInfo.GetColorCode(LbCourseColorView.ForeColor);
-            ChangeSaveStatus();
-        }
-        /// <summary>
-        /// 課題曲フォルダカラー変更
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtChangeSongColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                LbSongColorView.BackColor = colorDialog.Color;
-            }
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                LbSongColorView.ForeColor = colorDialog.Color;
-            }
-            nowTJP.SongFolderBackColor = ColorInfo.GetColorCode(LbSongColorView.BackColor);
-            nowTJP.SongFolderForeColor = ColorInfo.GetColorCode(LbSongColorView.ForeColor);
-            ChangeSaveStatus();
-        }
+
         /// <summary>
         /// 課題曲フォルダ内レベル別フォルダカラー変更
         /// </summary>
@@ -1065,6 +1191,23 @@ namespace JiroPackEditor
         private void RClickMenuTJCDelete_Click(object sender, EventArgs e)
         {
             DeleteTJC();
+        }
+
+        /// <summary>
+        /// 右クリックした際に右クリックしたノードを選択状態にする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TrPack_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var clickNode = TrPack.GetNodeAt(e.X, e.Y);
+                if (clickNode != null)
+                {
+                    TrPack.SelectedNode = clickNode;
+                }
+            }
         }
 
         /// <summary>
@@ -1194,6 +1337,7 @@ namespace JiroPackEditor
                         SetTJPInfoToView();
                         ChangeMenuByTrTJPSelectedNode(TrPack.Nodes[0]);
                         TrPack.ExpandAll();
+                        DrawSampleViewNowTJP();
                         MessageBox.Show("テンプレートを作成しました。");
                     }
                 }
@@ -1206,7 +1350,11 @@ namespace JiroPackEditor
 
         private void BtTJDforMJE_Click(object sender, EventArgs e)
         {
-
+            foreach (var tjc in nowTJP.TJCs)
+            {
+                tjc.TJDRed = TJD.CreateTJDforMJE(true, true, TJC.GetNumByTitle(tjc.Name), tjc.TJAs.Where(x => x != null).Sum(x => x.NotesCount));
+                tjc.TJDGold = TJD.CreateTJDforMJE(true, false, TJC.GetNumByTitle(tjc.Name), tjc.TJAs.Where(x => x != null).Sum(x => x.NotesCount));
+            }
             // 赤合格の場合
             if (CbRedOrGold.SelectedIndex == 0)
             {
@@ -1763,6 +1911,7 @@ namespace JiroPackEditor
             nowTJP.TJCs.Insert(TJCindex + 1, copiedTJC);
             TrPack.Nodes[0].Nodes.Insert(TJCindex + 1, copiedTJC.Name);
 
+            DrawSampleViewNowTJP();
             ChangeSaveStatus();
         }
 
@@ -1850,6 +1999,46 @@ namespace JiroPackEditor
         {
             nowTJC.TitleUnVisible(4, CbTitleUnVisible5.Checked);
             ChangeSaveStatus();
+        }
+
+        private void RbSongFolderMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbSongFolderMode1.Checked)
+            {
+                nowTJP.FolderMode = SongFolderMode.SortByCourse;
+            }
+            if (RbSongFolderMode2.Checked)
+            {
+                nowTJP.FolderMode = SongFolderMode.SortByLevel;
+            }
+            if (RbSongFolderMode3.Checked)
+            {
+                nowTJP.FolderMode = SongFolderMode.NoSort;
+            }
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
+        }
+
+        /// <summary>
+        /// TreeView選択不可
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TrJiroPreview_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void TbPackFolderName_TextChanged(object sender, EventArgs e)
+        {
+            DrawSampleViewNowTJP();
+
+        }
+
+        private void TbSongFolderName_TextChanged(object sender, EventArgs e)
+        {
+            DrawSampleViewNowTJP();
+
         }
     }
 }

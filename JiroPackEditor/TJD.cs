@@ -130,6 +130,85 @@ namespace JiroPackEditor {
                 return tjd;
             }
         }
+
+        /// <summary>
+        /// MJE向けTJD設定
+        /// </summary>
+        public static TJD CreateTJDforMJE(bool isSP, bool isRed, int level, int notes)
+        {
+            string name = isRed ? "2次合格" : "3次合格";
+            TJD tjd = new TJD(name);
+            tjd.PassingConditions = new List<PassingCondition>();
+            if (isSP)
+            {
+                // 条件① なし
+                PassingCondition conditionNone = new PassingCondition();
+                conditionNone.passingType = PassingType.None;
+                conditionNone.Threshold = 0;
+                // 条件② 可の数
+                PassingCondition conditionGoodCount = new PassingCondition();
+                conditionGoodCount.passingType = PassingType.GoodCount;
+                // 条件③ 不可の数
+                PassingCondition conditionBadCount = new PassingCondition();
+                conditionBadCount.passingType = PassingType.BadCount;
+                // 赤合格（二次合格の場合）
+                if (isRed)
+                {
+                    if (level >= 1 && level <= 5)
+                    {
+                        conditionGoodCount.Ratio = 0.2;
+                        conditionBadCount.Ratio = 0.05;
+                    }
+                    else if (level >= 6 && level <= 10)
+                    {
+                        conditionGoodCount.Ratio = 0.15;
+                        conditionBadCount.Ratio = 0.03;
+                    }
+                    else if (level >= 11)
+                    {
+                        conditionGoodCount.Ratio = 0.1;
+                        conditionBadCount.Ratio = 0.015;
+                    }
+                }
+                // 金合格（三次合格の場合）
+                else
+                {
+                    if (level >= 1 && level <= 5)
+                    {
+                        conditionGoodCount.Ratio = 0.05;
+                        conditionBadCount.Ratio = 0.015;
+                    }
+                    else if (level >= 6 && level <= 10)
+                    {
+                        conditionGoodCount.Ratio = 0.03;
+                        conditionBadCount.Ratio = 0.01;
+                    }
+                    else if (level >= 11)
+                    {
+                        conditionGoodCount.Ratio = 0.02;
+                        conditionBadCount.Ratio = 0.005;
+                    }
+                }
+                conditionGoodCount.Threshold = (int)(notes * conditionGoodCount.Ratio);
+                conditionBadCount.Threshold = (int)(notes * conditionBadCount.Ratio);
+                tjd.PassingConditions.Add(conditionNone);
+                tjd.PassingConditions.Add(conditionGoodCount);
+                tjd.PassingConditions.Add(conditionBadCount);
+                return tjd;
+            }
+            // DPの場合TJDなし = 条件なし
+            else
+            {
+                PassingCondition conditionNone = new PassingCondition();
+                conditionNone.passingType = PassingType.None;
+                conditionNone.Threshold = 0;
+                // 3つすべて条件なしで設定
+                tjd.PassingConditions.Add(conditionNone);
+                tjd.PassingConditions.Add(conditionNone);
+                tjd.PassingConditions.Add(conditionNone);
+                return tjd;
+            }
+        }
     }
 
     /// <summary>

@@ -32,9 +32,30 @@ namespace JiroPackEditor
             components = new System.ComponentModel.Container();
             TreeNode treeNode1 = new TreeNode("新しいパック");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            TreeNode treeNode2 = new TreeNode("新しいパック");
             TrPack = new TreeView();
             BtCreate = new Button();
             PanelPack = new Panel();
+            groupBox2 = new GroupBox();
+            label39 = new Label();
+            LbSongForeColorView = new Label();
+            LbCourseForeColorView = new Label();
+            LbPackBackColorView = new Label();
+            label2 = new Label();
+            label6 = new Label();
+            label3 = new Label();
+            LbPackForeColorView = new Label();
+            LbSongBackColorView = new Label();
+            LbCourseBackColorView = new Label();
+            label8 = new Label();
+            groupBox1 = new GroupBox();
+            RbSongFolderMode3 = new RadioButton();
+            TbSongFolderName = new TextBox();
+            TbPackFolderName = new TextBox();
+            label30 = new Label();
+            label32 = new Label();
+            RbSongFolderMode2 = new RadioButton();
+            RbSongFolderMode1 = new RadioButton();
             panel2 = new Panel();
             LbTJPMapsCount = new Label();
             label29 = new Label();
@@ -45,16 +66,6 @@ namespace JiroPackEditor
             LbTJCCount = new Label();
             label24 = new Label();
             label27 = new Label();
-            BtChangeSongColor = new Button();
-            LbSongColorView = new Label();
-            label8 = new Label();
-            BtChangeCourseColor = new Button();
-            LbCourseColorView = new Label();
-            label6 = new Label();
-            BtChangePackColor = new Button();
-            LbPackColorView = new Label();
-            label3 = new Label();
-            label2 = new Label();
             TbPackName = new TextBox();
             label1 = new Label();
             menuStrip1 = new MenuStrip();
@@ -176,7 +187,11 @@ namespace JiroPackEditor
             PbClose = new PictureBox();
             LbTitle = new Label();
             pictureBox1 = new PictureBox();
+            TrJiroPreview = new TreeView();
+            label22 = new Label();
             PanelPack.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
             panel2.SuspendLayout();
             menuStrip1.SuspendLayout();
             CmsPack.SuspendLayout();
@@ -202,13 +217,13 @@ namespace JiroPackEditor
             // TrPack
             // 
             TrPack.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            TrPack.Location = new Point(8, 61);
+            TrPack.Location = new Point(8, 62);
             TrPack.Margin = new Padding(2);
             TrPack.Name = "TrPack";
             treeNode1.Name = "PackNode";
             treeNode1.Text = "新しいパック";
             TrPack.Nodes.AddRange(new TreeNode[] { treeNode1 });
-            TrPack.Size = new Size(335, 628);
+            TrPack.Size = new Size(335, 345);
             TrPack.TabIndex = 0;
             TrPack.AfterSelect += TrPack_AfterSelect;
             TrPack.MouseDown += TrPack_MouseDown;
@@ -229,17 +244,9 @@ namespace JiroPackEditor
             // 
             // PanelPack
             // 
+            PanelPack.Controls.Add(groupBox2);
+            PanelPack.Controls.Add(groupBox1);
             PanelPack.Controls.Add(panel2);
-            PanelPack.Controls.Add(BtChangeSongColor);
-            PanelPack.Controls.Add(LbSongColorView);
-            PanelPack.Controls.Add(label8);
-            PanelPack.Controls.Add(BtChangeCourseColor);
-            PanelPack.Controls.Add(LbCourseColorView);
-            PanelPack.Controls.Add(label6);
-            PanelPack.Controls.Add(BtChangePackColor);
-            PanelPack.Controls.Add(LbPackColorView);
-            PanelPack.Controls.Add(label3);
-            PanelPack.Controls.Add(label2);
             PanelPack.Controls.Add(TbPackName);
             PanelPack.Controls.Add(label1);
             PanelPack.Font = new Font("游ゴシック", 9.75F);
@@ -248,6 +255,257 @@ namespace JiroPackEditor
             PanelPack.Name = "PanelPack";
             PanelPack.Size = new Size(649, 626);
             PanelPack.TabIndex = 2;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(label39);
+            groupBox2.Controls.Add(LbSongForeColorView);
+            groupBox2.Controls.Add(LbCourseForeColorView);
+            groupBox2.Controls.Add(LbPackBackColorView);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(LbPackForeColorView);
+            groupBox2.Controls.Add(LbSongBackColorView);
+            groupBox2.Controls.Add(LbCourseBackColorView);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Font = new Font("ＭＳ Ｐゴシック", 9.75F);
+            groupBox2.Location = new Point(8, 42);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(634, 179);
+            groupBox2.TabIndex = 24;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "フォルダカラー選択(ダブルクリックで変更)";
+            // 
+            // label39
+            // 
+            label39.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
+            label39.Location = new Point(377, 16);
+            label39.Margin = new Padding(4, 0, 4, 0);
+            label39.Name = "label39";
+            label39.Size = new Size(250, 23);
+            label39.TabIndex = 16;
+            label39.Text = "文字色";
+            label39.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // LbSongForeColorView
+            // 
+            LbSongForeColorView.BackColor = Color.DeepSkyBlue;
+            LbSongForeColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            LbSongForeColorView.ForeColor = Color.DeepSkyBlue;
+            LbSongForeColorView.Location = new Point(378, 120);
+            LbSongForeColorView.Margin = new Padding(4, 0, 4, 0);
+            LbSongForeColorView.Name = "LbSongForeColorView";
+            LbSongForeColorView.Size = new Size(249, 28);
+            LbSongForeColorView.TabIndex = 15;
+            LbSongForeColorView.TextAlign = ContentAlignment.MiddleCenter;
+            LbSongForeColorView.DoubleClick += LbSongForeColorView_DoubleClick;
+            // 
+            // LbCourseForeColorView
+            // 
+            LbCourseForeColorView.BackColor = Color.Red;
+            LbCourseForeColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            LbCourseForeColorView.ForeColor = Color.Red;
+            LbCourseForeColorView.Location = new Point(378, 79);
+            LbCourseForeColorView.Margin = new Padding(4, 0, 4, 0);
+            LbCourseForeColorView.Name = "LbCourseForeColorView";
+            LbCourseForeColorView.Size = new Size(249, 28);
+            LbCourseForeColorView.TabIndex = 14;
+            LbCourseForeColorView.TextAlign = ContentAlignment.MiddleCenter;
+            LbCourseForeColorView.DoubleClick += LbCourseForeColorView_DoubleClick;
+            // 
+            // LbPackBackColorView
+            // 
+            LbPackBackColorView.BackColor = Color.Black;
+            LbPackBackColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            LbPackBackColorView.ForeColor = Color.White;
+            LbPackBackColorView.Location = new Point(115, 38);
+            LbPackBackColorView.Margin = new Padding(4, 0, 4, 0);
+            LbPackBackColorView.Name = "LbPackBackColorView";
+            LbPackBackColorView.Size = new Size(250, 28);
+            LbPackBackColorView.TabIndex = 13;
+            LbPackBackColorView.TextAlign = ContentAlignment.MiddleCenter;
+            LbPackBackColorView.DoubleClick += LbPackBackColorView_DoubleClick;
+            // 
+            // label2
+            // 
+            label2.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
+            label2.Location = new Point(115, 18);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(250, 23);
+            label2.TabIndex = 12;
+            label2.Text = "背景色";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
+            label6.Location = new Point(7, 88);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(70, 12);
+            label6.TabIndex = 6;
+            label6.Text = "段位フォルダ";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
+            label3.Location = new Point(7, 47);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(72, 12);
+            label3.TabIndex = 3;
+            label3.Text = "パックフォルダ";
+            // 
+            // LbPackForeColorView
+            // 
+            LbPackForeColorView.BackColor = Color.White;
+            LbPackForeColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            LbPackForeColorView.ForeColor = Color.White;
+            LbPackForeColorView.Location = new Point(377, 38);
+            LbPackForeColorView.Margin = new Padding(4, 0, 4, 0);
+            LbPackForeColorView.Name = "LbPackForeColorView";
+            LbPackForeColorView.Size = new Size(250, 28);
+            LbPackForeColorView.TabIndex = 4;
+            LbPackForeColorView.TextAlign = ContentAlignment.MiddleCenter;
+            LbPackForeColorView.DoubleClick += LbPackForeColorView_DoubleClick;
+            // 
+            // LbSongBackColorView
+            // 
+            LbSongBackColorView.BackColor = Color.Black;
+            LbSongBackColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            LbSongBackColorView.ForeColor = Color.DeepSkyBlue;
+            LbSongBackColorView.Location = new Point(115, 120);
+            LbSongBackColorView.Margin = new Padding(4, 0, 4, 0);
+            LbSongBackColorView.Name = "LbSongBackColorView";
+            LbSongBackColorView.Size = new Size(250, 28);
+            LbSongBackColorView.TabIndex = 10;
+            LbSongBackColorView.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // LbCourseBackColorView
+            // 
+            LbCourseBackColorView.BackColor = Color.Black;
+            LbCourseBackColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            LbCourseBackColorView.ForeColor = Color.Red;
+            LbCourseBackColorView.Location = new Point(115, 79);
+            LbCourseBackColorView.Margin = new Padding(4, 0, 4, 0);
+            LbCourseBackColorView.Name = "LbCourseBackColorView";
+            LbCourseBackColorView.Size = new Size(250, 28);
+            LbCourseBackColorView.TabIndex = 7;
+            LbCourseBackColorView.TextAlign = ContentAlignment.MiddleCenter;
+            LbCourseBackColorView.DoubleClick += LbCourseBackColorView_DoubleClick;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
+            label8.Location = new Point(7, 128);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(83, 12);
+            label8.TabIndex = 9;
+            label8.Text = "課題曲フォルダ";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(RbSongFolderMode3);
+            groupBox1.Controls.Add(TbSongFolderName);
+            groupBox1.Controls.Add(TbPackFolderName);
+            groupBox1.Controls.Add(label30);
+            groupBox1.Controls.Add(label32);
+            groupBox1.Controls.Add(RbSongFolderMode2);
+            groupBox1.Controls.Add(RbSongFolderMode1);
+            groupBox1.Font = new Font("ＭＳ Ｐゴシック", 9.75F);
+            groupBox1.Location = new Point(8, 222);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(634, 152);
+            groupBox1.TabIndex = 23;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "パック詳細編集";
+            // 
+            // RbSongFolderMode3
+            // 
+            RbSongFolderMode3.AutoSize = true;
+            RbSongFolderMode3.Location = new Point(7, 125);
+            RbSongFolderMode3.Name = "RbSongFolderMode3";
+            RbSongFolderMode3.Size = new Size(194, 17);
+            RbSongFolderMode3.TabIndex = 15;
+            RbSongFolderMode3.Text = "譜面のフォルダ分けを行わない";
+            RbSongFolderMode3.UseVisualStyleBackColor = true;
+            RbSongFolderMode3.CheckedChanged += RbSongFolderMode_CheckedChanged;
+            // 
+            // TbSongFolderName
+            // 
+            TbSongFolderName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            TbSongFolderName.Font = new Font("MS UI Gothic", 9F);
+            TbSongFolderName.Location = new Point(122, 53);
+            TbSongFolderName.Margin = new Padding(4);
+            TbSongFolderName.Name = "TbSongFolderName";
+            TbSongFolderName.Size = new Size(505, 19);
+            TbSongFolderName.TabIndex = 14;
+            TbSongFolderName.Text = "課題曲";
+            TbSongFolderName.TextChanged += TbSongFolderName_TextChanged;
+            // 
+            // TbPackFolderName
+            // 
+            TbPackFolderName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            TbPackFolderName.Font = new Font("MS UI Gothic", 9F);
+            TbPackFolderName.Location = new Point(123, 27);
+            TbPackFolderName.Margin = new Padding(4);
+            TbPackFolderName.Name = "TbPackFolderName";
+            TbPackFolderName.Size = new Size(505, 19);
+            TbPackFolderName.TabIndex = 13;
+            TbPackFolderName.Text = "段位";
+            TbPackFolderName.TextChanged += TbPackFolderName_TextChanged;
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
+            label30.Location = new Point(4, 30);
+            label30.Margin = new Padding(4, 0, 4, 0);
+            label30.Name = "label30";
+            label30.Size = new Size(83, 12);
+            label30.TabIndex = 10;
+            label30.Text = "段位フォルダ名";
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
+            label32.Location = new Point(4, 56);
+            label32.Margin = new Padding(4, 0, 4, 0);
+            label32.Name = "label32";
+            label32.Size = new Size(96, 12);
+            label32.TabIndex = 12;
+            label32.Text = "課題曲フォルダ名";
+            // 
+            // RbSongFolderMode2
+            // 
+            RbSongFolderMode2.AutoSize = true;
+            RbSongFolderMode2.Location = new Point(7, 102);
+            RbSongFolderMode2.Name = "RbSongFolderMode2";
+            RbSongFolderMode2.Size = new Size(202, 17);
+            RbSongFolderMode2.TabIndex = 3;
+            RbSongFolderMode2.Text = "難易度ごとにフォルダを作成する";
+            RbSongFolderMode2.UseVisualStyleBackColor = true;
+            RbSongFolderMode2.CheckedChanged += RbSongFolderMode_CheckedChanged;
+            // 
+            // RbSongFolderMode1
+            // 
+            RbSongFolderMode1.AutoSize = true;
+            RbSongFolderMode1.Checked = true;
+            RbSongFolderMode1.Location = new Point(7, 79);
+            RbSongFolderMode1.Name = "RbSongFolderMode1";
+            RbSongFolderMode1.Size = new Size(197, 17);
+            RbSongFolderMode1.TabIndex = 2;
+            RbSongFolderMode1.TabStop = true;
+            RbSongFolderMode1.Text = "コースごとにフォルダを作成する";
+            RbSongFolderMode1.UseVisualStyleBackColor = true;
+            RbSongFolderMode1.CheckedChanged += RbSongFolderMode_CheckedChanged;
             // 
             // panel2
             // 
@@ -366,128 +624,6 @@ namespace JiroPackEditor
             label27.Size = new Size(77, 16);
             label27.TabIndex = 22;
             label27.Text = "パック情報";
-            // 
-            // BtChangeSongColor
-            // 
-            BtChangeSongColor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtChangeSongColor.Font = new Font("MS UI Gothic", 9F);
-            BtChangeSongColor.Location = new Point(553, 148);
-            BtChangeSongColor.Margin = new Padding(4);
-            BtChangeSongColor.Name = "BtChangeSongColor";
-            BtChangeSongColor.Size = new Size(88, 29);
-            BtChangeSongColor.TabIndex = 11;
-            BtChangeSongColor.Text = "変更";
-            BtChangeSongColor.UseVisualStyleBackColor = true;
-            BtChangeSongColor.Click += BtChangeSongColor_Click;
-            // 
-            // LbSongColorView
-            // 
-            LbSongColorView.BackColor = Color.Black;
-            LbSongColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            LbSongColorView.ForeColor = Color.DeepSkyBlue;
-            LbSongColorView.Location = new Point(117, 149);
-            LbSongColorView.Margin = new Padding(4, 0, 4, 0);
-            LbSongColorView.Name = "LbSongColorView";
-            LbSongColorView.Size = new Size(428, 28);
-            LbSongColorView.TabIndex = 10;
-            LbSongColorView.Text = "プレビュー";
-            LbSongColorView.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
-            label8.Location = new Point(10, 157);
-            label8.Margin = new Padding(4, 0, 4, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(83, 12);
-            label8.TabIndex = 9;
-            label8.Text = "課題曲フォルダ";
-            // 
-            // BtChangeCourseColor
-            // 
-            BtChangeCourseColor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtChangeCourseColor.Font = new Font("MS UI Gothic", 9F);
-            BtChangeCourseColor.Location = new Point(553, 107);
-            BtChangeCourseColor.Margin = new Padding(4);
-            BtChangeCourseColor.Name = "BtChangeCourseColor";
-            BtChangeCourseColor.Size = new Size(88, 29);
-            BtChangeCourseColor.TabIndex = 8;
-            BtChangeCourseColor.Text = "変更";
-            BtChangeCourseColor.UseVisualStyleBackColor = true;
-            BtChangeCourseColor.Click += BtChangeCourseColor_Click;
-            // 
-            // LbCourseColorView
-            // 
-            LbCourseColorView.BackColor = Color.Black;
-            LbCourseColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            LbCourseColorView.ForeColor = Color.Red;
-            LbCourseColorView.Location = new Point(117, 108);
-            LbCourseColorView.Margin = new Padding(4, 0, 4, 0);
-            LbCourseColorView.Name = "LbCourseColorView";
-            LbCourseColorView.Size = new Size(428, 28);
-            LbCourseColorView.TabIndex = 7;
-            LbCourseColorView.Text = "プレビュー";
-            LbCourseColorView.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
-            label6.Location = new Point(10, 117);
-            label6.Margin = new Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(70, 12);
-            label6.TabIndex = 6;
-            label6.Text = "段位フォルダ";
-            // 
-            // BtChangePackColor
-            // 
-            BtChangePackColor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtChangePackColor.Font = new Font("MS UI Gothic", 9F);
-            BtChangePackColor.Location = new Point(553, 66);
-            BtChangePackColor.Margin = new Padding(4);
-            BtChangePackColor.Name = "BtChangePackColor";
-            BtChangePackColor.Size = new Size(88, 29);
-            BtChangePackColor.TabIndex = 5;
-            BtChangePackColor.Text = "変更";
-            BtChangePackColor.UseVisualStyleBackColor = true;
-            BtChangePackColor.Click += BtChangePackColor_Click;
-            // 
-            // LbPackColorView
-            // 
-            LbPackColorView.BackColor = Color.Black;
-            LbPackColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            LbPackColorView.ForeColor = Color.White;
-            LbPackColorView.Location = new Point(117, 66);
-            LbPackColorView.Margin = new Padding(4, 0, 4, 0);
-            LbPackColorView.Name = "LbPackColorView";
-            LbPackColorView.Size = new Size(428, 28);
-            LbPackColorView.TabIndex = 4;
-            LbPackColorView.Text = "プレビュー";
-            LbPackColorView.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold);
-            label3.Location = new Point(10, 76);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(46, 12);
-            label3.TabIndex = 3;
-            label3.Text = "パック名";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label2.Location = new Point(9, 41);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(130, 16);
-            label2.TabIndex = 2;
-            label2.Text = "フォルダカラー選択";
             // 
             // TbPackName
             // 
@@ -681,7 +817,6 @@ namespace JiroPackEditor
             PanelCourse.Controls.Add(LbLevel5);
             PanelCourse.Controls.Add(LbLevel3);
             PanelCourse.Controls.Add(LbLevel2);
-            PanelCourse.Controls.Add(panel1);
             PanelCourse.Controls.Add(LbLevel1);
             PanelCourse.Controls.Add(label31);
             PanelCourse.Controls.Add(LbLevel4);
@@ -719,6 +854,7 @@ namespace JiroPackEditor
             PanelCourse.Controls.Add(TbCourseName);
             PanelCourse.Controls.Add(label16);
             PanelCourse.Controls.Add(LbNotesCount4);
+            PanelCourse.Controls.Add(panel1);
             PanelCourse.Font = new Font("MS UI Gothic", 9F);
             PanelCourse.Location = new Point(349, 61);
             PanelCourse.Margin = new Padding(2);
@@ -1094,7 +1230,7 @@ namespace JiroPackEditor
             BtTestPlay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             BtTestPlay.BackColor = Color.Orange;
             BtTestPlay.Font = new Font("MS UI Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            BtTestPlay.Location = new Point(483, 72);
+            BtTestPlay.Location = new Point(481, 70);
             BtTestPlay.Margin = new Padding(2);
             BtTestPlay.Name = "BtTestPlay";
             BtTestPlay.Size = new Size(166, 45);
@@ -1597,7 +1733,7 @@ namespace JiroPackEditor
             BtTJDforMJE.Name = "BtTJDforMJE";
             BtTJDforMJE.Size = new Size(139, 56);
             BtTJDforMJE.TabIndex = 27;
-            BtTJDforMJE.Text = "みおすな式段位条件\r\n自動設定";
+            BtTJDforMJE.Text = "みおすな式段位条件\r\n一括自動設定";
             BtTJDforMJE.UseVisualStyleBackColor = true;
             BtTJDforMJE.Click += BtTJDforMJE_Click;
             // 
@@ -1895,19 +2031,46 @@ namespace JiroPackEditor
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // TrJiroPreview
+            // 
+            TrJiroPreview.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            TrJiroPreview.BackColor = Color.Gray;
+            TrJiroPreview.Location = new Point(8, 443);
+            TrJiroPreview.Margin = new Padding(2);
+            TrJiroPreview.Name = "TrJiroPreview";
+            treeNode2.Name = "PackNode";
+            treeNode2.Text = "新しいパック";
+            TrJiroPreview.Nodes.AddRange(new TreeNode[] { treeNode2 });
+            TrJiroPreview.Size = new Size(335, 246);
+            TrJiroPreview.TabIndex = 14;
+            TrJiroPreview.BeforeSelect += TrJiroPreview_BeforeSelect;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold);
+            label22.Location = new Point(8, 419);
+            label22.Margin = new Padding(4, 0, 4, 0);
+            label22.Name = "label22";
+            label22.Size = new Size(181, 16);
+            label22.TabIndex = 23;
+            label22.Text = "次郎内パック表示イメージ";
+            // 
             // Form1
             // 
             AllowDrop = true;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1121, 696);
+            Controls.Add(label22);
+            Controls.Add(TrJiroPreview);
             Controls.Add(PnTitle);
             Controls.Add(BtMJECreate);
             Controls.Add(BtCreate);
             Controls.Add(TrPack);
             Controls.Add(menuStrip1);
-            Controls.Add(PanelCourse);
             Controls.Add(PanelPack);
+            Controls.Add(PanelCourse);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
@@ -1927,6 +2090,10 @@ namespace JiroPackEditor
             MouseUp += Form_MouseUp;
             PanelPack.ResumeLayout(false);
             PanelPack.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             menuStrip1.ResumeLayout(false);
@@ -1970,15 +2137,14 @@ namespace JiroPackEditor
         private System.Windows.Forms.Button BtMJECreate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtChangeSongColor;
-        private System.Windows.Forms.Label LbSongColorView;
+        private System.Windows.Forms.Label LbSongBackColorView;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button BtChangeCourseColor;
-        private System.Windows.Forms.Label LbCourseColorView;
+        private System.Windows.Forms.Label LbCourseBackColorView;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button BtChangePackColor;
-        private System.Windows.Forms.Label LbPackColorView;
+        private System.Windows.Forms.Label LbPackForeColorView;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TbPackName;
         private System.Windows.Forms.ContextMenuStrip CmsPack;
         private System.Windows.Forms.ToolStripMenuItem RClickMenuAddNewTJC;
@@ -2103,6 +2269,22 @@ namespace JiroPackEditor
         private CheckBox CbTitleUnVisible2;
         private CheckBox CbTitleUnVisible5;
         private Label label12;
+        private TreeView TrJiroPreview;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private RadioButton RbSongFolderMode2;
+        private RadioButton RbSongFolderMode1;
+        private Label LbPackBackColorView;
+        private Label label2;
+        private RadioButton RbSongFolderMode3;
+        private TextBox TbSongFolderName;
+        private TextBox TbPackFolderName;
+        private Label label30;
+        private Label label32;
+        private Label label39;
+        private Label LbSongForeColorView;
+        private Label LbCourseForeColorView;
+        private Label label22;
     }
 }
 

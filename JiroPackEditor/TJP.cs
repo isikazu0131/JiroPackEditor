@@ -62,11 +62,29 @@ namespace JiroPackEditor {
         public List<TJC> TJCs { get; set; }
 
         /// <summary>
+        /// 譜面のフォルダ分け
+        /// </summary>
+        public SongFolderMode FolderMode { get; set; }
+
+        /// <summary>
+        /// 段位フォルダ名称
+        /// </summary>
+        public string CourseFolderName { get; set; }
+
+        /// <summary>
+        /// 課題曲フォルダ名称
+        /// </summary>
+        public string SongsFolderName { get; set; }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public TJP()
         {
             Version = Constants.AppInfo.VersionInt;
+            FolderMode = SongFolderMode.SortByCourse;
+            CourseFolderName = "段位";
+            SongsFolderName = "課題曲";
             TJCs = new List<TJC>();
         }
 
@@ -197,15 +215,14 @@ namespace JiroPackEditor {
             OutputTJPDInfo.Create();
 
             // 「段位」フォルダ、「課題曲」フォルダ、「tjd」フォルダを作る
-            var courseDInfo = OutputTJPDInfo.CreateSubdirectory(Constants.DirectoryName.Course);
-            var songDInfo = OutputTJPDInfo.CreateSubdirectory(Constants.DirectoryName.Songs);
+            var courseDInfo = OutputTJPDInfo.CreateSubdirectory(tjp.CourseFolderName);
+            var songDInfo = OutputTJPDInfo.CreateSubdirectory(tjp.SongsFolderName);
             var tjdDInfo = OutputTJPDInfo.CreateSubdirectory(Constants.DirectoryName.tjd);
-
 
             // パック、段位、課題曲フォルダに対してGenre.iniを出力する
             if (GenreIni.Write(OutputTJPDInfo.FullName, tjp.Name, tjp.PackFolderBackColor, tjp.PackFolderForeColor) == false ||
-                GenreIni.Write(courseDInfo.FullName, "段位", tjp.CourseFolderBackColor, tjp.CourseFolderForeColor) == false ||
-                GenreIni.Write(songDInfo.FullName, "課題曲", tjp.SongFolderBackColor, tjp.SongFolderForeColor) == false) {
+                GenreIni.Write(courseDInfo.FullName, tjp.CourseFolderName, tjp.CourseFolderBackColor, tjp.CourseFolderForeColor) == false ||
+                GenreIni.Write(songDInfo.FullName, tjp.SongsFolderName, tjp.SongFolderBackColor, tjp.SongFolderForeColor) == false) {
                 MessageBox.Show("Genre.iniの作成に失敗しました。",
                                 "ざんねん",
                                 MessageBoxButtons.OK,
@@ -214,8 +231,22 @@ namespace JiroPackEditor {
             }
 
             // TJC1つずつに対して処理を行う
+            // レベルごとのソート用にレベル一覧を取得しておく
+            var Levels = new List<double>();
+            foreach(var tjc in tjp.TJCs)
+            {
+                Levels.AddRange(tjc.TJAs.Where(x => x != null).Select(x => Math.Floor(x.LEVEL)));
+            }
+            Levels = Levels.Distinct().ToList();
             foreach (var tjc in tjp.TJCs) {
-                tjc.Export(tjp.Name, OutputTJPDInfo);
+                if(tjp.FolderMode == SongFolderMode.SortByLevel)
+                {
+                    tjc.Export(tjp.Name, OutputTJPDInfo, tjp.FolderMode, Levels);
+                }
+                else
+                {
+                    tjc.Export(tjp.Name, OutputTJPDInfo, tjp.FolderMode);
+                }
             }
 
             // 圧縮処理を行う
@@ -273,5 +304,26 @@ namespace JiroPackEditor {
                 return false;
             }
         }
+    }
+
+    /// <summary>
+    /// 課題曲フォルダの譜面のフォルダ分けについて
+    /// </summary>
+    public enum SongFolderMode
+    {
+        /// <summary>
+        /// 段位ごとに仕分ける
+        /// </summary>
+        SortByCourse,
+
+        /// <summary>
+        /// 難易度ごとに仕分ける
+        /// </summary>
+        SortByLevel,
+
+        /// <summary>
+        /// 仕分けを行わない
+        /// </summary>
+        NoSort
     }
 }
