@@ -6,11 +6,7 @@
 *.pdb
 *.cache
 /JiroPackEditor/obj
-/JiroPackEditor/obj
 *.cache
 .vs/JiroPackEditor/v17/DocumentLayout.json
 *.json
 *.cache
-*.cache
-/JiroPackEditor/obj
-/JiroPackEditor/obj
