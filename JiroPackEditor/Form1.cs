@@ -774,11 +774,11 @@ namespace JiroPackEditor
                 return;
             }
             nowTJP = openedTJP;
+            isSaved = true;
             DrawTreeViewNowTJP();
             TrPack.SelectedNode = TrPack.Nodes[0];
             ChangeMenuByTrTJPSelectedNode(TrPack.Nodes[0]);
             TrPack.ExpandAll();
-            isSaved = true;
         }
 
         /// <summary>
@@ -848,6 +848,7 @@ namespace JiroPackEditor
                 {
                     isSaved = true;
                     NowOpeningFilePath = sFileDialog.FileName;
+                    FormTitleChange();
                     return true;
                 }
                 else
@@ -1529,6 +1530,7 @@ namespace JiroPackEditor
         }
         private void CbCondition1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             ConditionSetting(CbCondition1,
                              NmThreshold1,
                              LbMoreLess1,
@@ -1540,6 +1542,7 @@ namespace JiroPackEditor
 
         private void CbCondition2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             ConditionSetting(CbCondition2,
                              NmThreshold2,
                              LbMoreLess2,
@@ -1551,6 +1554,7 @@ namespace JiroPackEditor
 
         private void CbCondition3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             ConditionSetting(CbCondition3,
                              NmThreshold3,
                              LbMoreLess3,
@@ -1868,6 +1872,7 @@ namespace JiroPackEditor
 
         private void CbNumbering_CheckedChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             nowTJP.TJCs[nowTJCindex].IsNumberingEnable = CbNumbering.Checked;
             ChangeSaveStatus();
         }
@@ -1999,30 +2004,35 @@ namespace JiroPackEditor
         /// <param name="e"></param>
         private void CbTitleUnVisible1_CheckedChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             nowTJC.TitleUnVisible(0, CbTitleUnVisible1.Checked);
             ChangeSaveStatus();
         }
 
         private void CbTitleUnVisible2_CheckedChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             nowTJC.TitleUnVisible(1, CbTitleUnVisible2.Checked);
             ChangeSaveStatus();
         }
 
         private void CbTitleUnVisible3_CheckedChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             nowTJC.TitleUnVisible(2, CbTitleUnVisible3.Checked);
             ChangeSaveStatus();
         }
 
         private void CbTitleUnVisible4_CheckedChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             nowTJC.TitleUnVisible(3, CbTitleUnVisible4.Checked);
             ChangeSaveStatus();
         }
 
         private void CbTitleUnVisible5_CheckedChanged(object sender, EventArgs e)
         {
+            if (FlagChangeByUI == true) return;
             nowTJC.TitleUnVisible(4, CbTitleUnVisible5.Checked);
             ChangeSaveStatus();
         }
