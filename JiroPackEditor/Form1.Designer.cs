@@ -30,9 +30,9 @@ namespace JiroPackEditor
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            TreeNode treeNode1 = new TreeNode("新しいパック");
+            TreeNode treeNode3 = new TreeNode("新しいパック");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            TreeNode treeNode2 = new TreeNode("新しいパック");
+            TreeNode treeNode4 = new TreeNode("新しいパック");
             TrPack = new TreeView();
             BtCreate = new Button();
             PanelPack = new Panel();
@@ -104,11 +104,6 @@ namespace JiroPackEditor
             LbLevel5 = new Label();
             LbLevel3 = new Label();
             LbLevel2 = new Label();
-            panel1 = new Panel();
-            BtChangeCourseSongColor = new Button();
-            LbLevelColorView = new Label();
-            label14 = new Label();
-            label10 = new Label();
             LbLevel1 = new Label();
             label31 = new Label();
             LbLevel4 = new Label();
@@ -181,6 +176,11 @@ namespace JiroPackEditor
             TbCourseName = new TextBox();
             label16 = new Label();
             LbNotesCount4 = new Label();
+            panel1 = new Panel();
+            BtChangeCourseSongColor = new Button();
+            LbLevelColorView = new Label();
+            label14 = new Label();
+            label10 = new Label();
             colorDialog = new ColorDialog();
             PnTitle = new Panel();
             PbMinimum = new PictureBox();
@@ -197,7 +197,6 @@ namespace JiroPackEditor
             CmsPack.SuspendLayout();
             CmsCourse.SuspendLayout();
             PanelCourse.SuspendLayout();
-            panel1.SuspendLayout();
             PanelCourseInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NmNumbering).BeginInit();
             PanelTJD.SuspendLayout();
@@ -208,6 +207,7 @@ namespace JiroPackEditor
             ((System.ComponentModel.ISupportInitialize)NmThreshold3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NmThreshold2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NmThreshold1).BeginInit();
+            panel1.SuspendLayout();
             PnTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbMinimum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbClose).BeginInit();
@@ -220,9 +220,9 @@ namespace JiroPackEditor
             TrPack.Location = new Point(8, 62);
             TrPack.Margin = new Padding(2);
             TrPack.Name = "TrPack";
-            treeNode1.Name = "PackNode";
-            treeNode1.Text = "新しいパック";
-            TrPack.Nodes.AddRange(new TreeNode[] { treeNode1 });
+            treeNode3.Name = "PackNode";
+            treeNode3.Text = "新しいパック";
+            TrPack.Nodes.AddRange(new TreeNode[] { treeNode3 });
             TrPack.Size = new Size(335, 345);
             TrPack.TabIndex = 0;
             TrPack.AfterSelect += TrPack_AfterSelect;
@@ -384,6 +384,7 @@ namespace JiroPackEditor
             LbSongBackColorView.Size = new Size(250, 28);
             LbSongBackColorView.TabIndex = 10;
             LbSongBackColorView.TextAlign = ContentAlignment.MiddleCenter;
+            LbSongBackColorView.DoubleClick += LbSongBackColorView_DoubleClick;
             // 
             // LbCourseBackColorView
             // 
@@ -1049,67 +1050,6 @@ namespace JiroPackEditor
             LbLevel2.Text = "0.0";
             LbLevel2.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Controls.Add(BtChangeCourseSongColor);
-            panel1.Controls.Add(LbLevelColorView);
-            panel1.Controls.Add(label14);
-            panel1.Controls.Add(label10);
-            panel1.ForeColor = SystemColors.ControlText;
-            panel1.Location = new Point(0, 436);
-            panel1.Margin = new Padding(4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(649, 76);
-            panel1.TabIndex = 40;
-            // 
-            // BtChangeCourseSongColor
-            // 
-            BtChangeCourseSongColor.Font = new Font("MS UI Gothic", 9F);
-            BtChangeCourseSongColor.Location = new Point(506, 36);
-            BtChangeCourseSongColor.Margin = new Padding(4);
-            BtChangeCourseSongColor.Name = "BtChangeCourseSongColor";
-            BtChangeCourseSongColor.Size = new Size(135, 29);
-            BtChangeCourseSongColor.TabIndex = 43;
-            BtChangeCourseSongColor.Text = "変更";
-            BtChangeCourseSongColor.UseVisualStyleBackColor = true;
-            BtChangeCourseSongColor.Click += BtChangeCourseSongColor_Click;
-            // 
-            // LbLevelColorView
-            // 
-            LbLevelColorView.BackColor = Color.Black;
-            LbLevelColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            LbLevelColorView.ForeColor = Color.White;
-            LbLevelColorView.Location = new Point(171, 37);
-            LbLevelColorView.Margin = new Padding(4, 0, 4, 0);
-            LbLevelColorView.Name = "LbLevelColorView";
-            LbLevelColorView.Size = new Size(325, 28);
-            LbLevelColorView.TabIndex = 42;
-            LbLevelColorView.Text = "プレビュー";
-            LbLevelColorView.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("MS UI Gothic", 9F);
-            label14.Location = new Point(10, 36);
-            label14.Margin = new Padding(4, 0, 4, 0);
-            label14.Name = "label14";
-            label14.Size = new Size(142, 24);
-            label14.TabIndex = 41;
-            label14.Text = "課題曲フォルダ内\r\nコース別課題曲フォルダカラー\r\n";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold);
-            label10.Location = new Point(9, 11);
-            label10.Margin = new Padding(4, 0, 4, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(111, 16);
-            label10.TabIndex = 34;
-            label10.Text = "そのほかの設定";
-            // 
             // LbLevel1
             // 
             LbLevel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -1348,6 +1288,7 @@ namespace JiroPackEditor
             TbTJA5.ReadOnly = true;
             TbTJA5.Size = new Size(255, 19);
             TbTJA5.TabIndex = 37;
+            TbTJA5.TextChanged += TbTJA5_TextChanged;
             // 
             // BtSongSelect5
             // 
@@ -1371,6 +1312,7 @@ namespace JiroPackEditor
             TbTJA4.ReadOnly = true;
             TbTJA4.Size = new Size(255, 19);
             TbTJA4.TabIndex = 34;
+            TbTJA4.TextChanged += TbTJA4_TextChanged;
             // 
             // BtSongSelect4
             // 
@@ -1839,6 +1781,7 @@ namespace JiroPackEditor
             TbTJA3.ReadOnly = true;
             TbTJA3.Size = new Size(255, 19);
             TbTJA3.TabIndex = 14;
+            TbTJA3.TextChanged += TbTJA3_TextChanged;
             // 
             // TbTJA2
             // 
@@ -1850,6 +1793,7 @@ namespace JiroPackEditor
             TbTJA2.ReadOnly = true;
             TbTJA2.Size = new Size(255, 19);
             TbTJA2.TabIndex = 13;
+            TbTJA2.TextChanged += TbTJA2_TextChanged;
             // 
             // TbTJA1
             // 
@@ -1861,6 +1805,7 @@ namespace JiroPackEditor
             TbTJA1.ReadOnly = true;
             TbTJA1.Size = new Size(255, 19);
             TbTJA1.TabIndex = 12;
+            TbTJA1.TextChanged += TbTJA1_TextChanged;
             // 
             // BtSongSelect3
             // 
@@ -1970,6 +1915,67 @@ namespace JiroPackEditor
             LbNotesCount4.Text = "0";
             LbNotesCount4.TextAlign = ContentAlignment.MiddleRight;
             // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(BtChangeCourseSongColor);
+            panel1.Controls.Add(LbLevelColorView);
+            panel1.Controls.Add(label14);
+            panel1.Controls.Add(label10);
+            panel1.ForeColor = SystemColors.ControlText;
+            panel1.Location = new Point(0, 436);
+            panel1.Margin = new Padding(4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(649, 76);
+            panel1.TabIndex = 40;
+            // 
+            // BtChangeCourseSongColor
+            // 
+            BtChangeCourseSongColor.Font = new Font("MS UI Gothic", 9F);
+            BtChangeCourseSongColor.Location = new Point(506, 36);
+            BtChangeCourseSongColor.Margin = new Padding(4);
+            BtChangeCourseSongColor.Name = "BtChangeCourseSongColor";
+            BtChangeCourseSongColor.Size = new Size(135, 29);
+            BtChangeCourseSongColor.TabIndex = 43;
+            BtChangeCourseSongColor.Text = "変更";
+            BtChangeCourseSongColor.UseVisualStyleBackColor = true;
+            BtChangeCourseSongColor.Click += BtChangeCourseSongColor_Click;
+            // 
+            // LbLevelColorView
+            // 
+            LbLevelColorView.BackColor = Color.Black;
+            LbLevelColorView.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            LbLevelColorView.ForeColor = Color.White;
+            LbLevelColorView.Location = new Point(171, 37);
+            LbLevelColorView.Margin = new Padding(4, 0, 4, 0);
+            LbLevelColorView.Name = "LbLevelColorView";
+            LbLevelColorView.Size = new Size(325, 28);
+            LbLevelColorView.TabIndex = 42;
+            LbLevelColorView.Text = "プレビュー";
+            LbLevelColorView.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("MS UI Gothic", 9F);
+            label14.Location = new Point(10, 36);
+            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(142, 24);
+            label14.TabIndex = 41;
+            label14.Text = "課題曲フォルダ内\r\nコース別課題曲フォルダカラー\r\n";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("MS UI Gothic", 12F, FontStyle.Bold);
+            label10.Location = new Point(9, 11);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(111, 16);
+            label10.TabIndex = 34;
+            label10.Text = "そのほかの設定";
+            // 
             // PnTitle
             // 
             PnTitle.BackColor = Color.FromArgb(64, 64, 64);
@@ -2038,9 +2044,9 @@ namespace JiroPackEditor
             TrJiroPreview.Location = new Point(8, 443);
             TrJiroPreview.Margin = new Padding(2);
             TrJiroPreview.Name = "TrJiroPreview";
-            treeNode2.Name = "PackNode";
-            treeNode2.Text = "新しいパック";
-            TrJiroPreview.Nodes.AddRange(new TreeNode[] { treeNode2 });
+            treeNode4.Name = "PackNode";
+            treeNode4.Text = "新しいパック";
+            TrJiroPreview.Nodes.AddRange(new TreeNode[] { treeNode4 });
             TrJiroPreview.Size = new Size(335, 246);
             TrJiroPreview.TabIndex = 14;
             TrJiroPreview.BeforeSelect += TrJiroPreview_BeforeSelect;
@@ -2102,8 +2108,6 @@ namespace JiroPackEditor
             CmsCourse.ResumeLayout(false);
             PanelCourse.ResumeLayout(false);
             PanelCourse.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             PanelCourseInfo.ResumeLayout(false);
             PanelCourseInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)NmNumbering).EndInit();
@@ -2116,6 +2120,8 @@ namespace JiroPackEditor
             ((System.ComponentModel.ISupportInitialize)NmThreshold3).EndInit();
             ((System.ComponentModel.ISupportInitialize)NmThreshold2).EndInit();
             ((System.ComponentModel.ISupportInitialize)NmThreshold1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             PnTitle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PbMinimum).EndInit();
             ((System.ComponentModel.ISupportInitialize)PbClose).EndInit();

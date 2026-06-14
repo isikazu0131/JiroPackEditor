@@ -366,8 +366,8 @@ namespace JiroPackEditor
         {
             if (MessageBox.Show("選択したコースを削除しますか？", "ホンマに消すんか？", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                TrPack.SelectedNode.Remove();
                 nowTJP.TJCs.RemoveAt(nowTJCindex);
+                TrPack.SelectedNode.Remove();
                 if (nowTJP.TJCs.Count == 0)
                 {
                     PanelPack.Enabled = true;
@@ -437,16 +437,20 @@ namespace JiroPackEditor
             // コースごとにフォルダ分け
             if (SongFolderModes[0] == true)
             {
-                foreach(var tjc in nowTJP.TJCs.Select((v, i) => (v, i)))
+                foreach (var tjc in nowTJP.TJCs.Select((v, i) => (v, i)))
                 {
                     TrJiroPreview.Nodes[0].Nodes[1].Nodes.Add(tjc.v.Name);
                     TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].BackColor = ColorInfo.GetColor(tjc.v.LevelBackColor);
                     TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].ForeColor = ColorInfo.GetColor(tjc.v.LevelForeColor);
-                    foreach(var tja in tjc.v.TJAs.Select((v, i)=>(v, i))){
+
+                    int addedIndex = 0; // ← 追加した順番を別途カウント
+                    foreach (var tja in tjc.v.TJAs.Select((v, i) => (v, i)))
+                    {
                         if (tja.v == null) continue;
                         TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].Nodes.Add(tja.v.TITLE);
-                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].Nodes[tja.i].BackColor = ColorInfo.GetColor(tjc.v.LevelBackColor);
-                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].Nodes[tja.i].ForeColor = ColorInfo.GetColor(tjc.v.LevelForeColor);
+                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].Nodes[addedIndex].BackColor = ColorInfo.GetColor(tjc.v.LevelBackColor); // ← tja.i → addedIndex
+                        TrJiroPreview.Nodes[0].Nodes[1].Nodes[tjc.i].Nodes[addedIndex].ForeColor = ColorInfo.GetColor(tjc.v.LevelForeColor); // ← tja.i → addedIndex
+                        addedIndex++;
                     }
                 }
             }
@@ -455,13 +459,13 @@ namespace JiroPackEditor
             {
                 var TJAs = new List<TJA>();
                 // 一旦TJA内のtjaを列挙
-                foreach(var tjc in nowTJP.TJCs)
+                foreach (var tjc in nowTJP.TJCs)
                 {
                     TJAs.AddRange(tjc.TJAs.Where(x => x != null));
                 }
                 // 難易度（整数部分）をリスト化
                 List<double> Levels = TJAs.Select(x => Math.Floor(x.LEVEL)).Distinct().ToList();
-                foreach(var level in Levels.Select((v, i) => (v, i)))
+                foreach (var level in Levels.Select((v, i) => (v, i)))
                 {
                     TrJiroPreview.Nodes[0].Nodes[1].Nodes.Add($"☆{level.v}");
                     TrJiroPreview.Nodes[0].Nodes[1].Nodes[level.i].BackColor = Color.FromArgb(200 - level.i * 25, 200 - level.i * 25, 200 - level.i * 25);
@@ -475,7 +479,7 @@ namespace JiroPackEditor
                 }
             }
             // フォルダ分けしない
-            else if(SongFolderModes[2] == true)
+            else if (SongFolderModes[2] == true)
             {
                 var TJAs = new List<TJA>();
                 // 一旦TJA内のtjaを列挙
@@ -483,7 +487,7 @@ namespace JiroPackEditor
                 {
                     TJAs.AddRange(tjc.TJAs.Where(x => x != null));
                 }
-                foreach(var tja in TJAs.Select((v, i) => (v, i)))
+                foreach (var tja in TJAs.Select((v, i) => (v, i)))
                 {
                     TrJiroPreview.Nodes[0].Nodes[1].Nodes.Add(tja.v.TITLE);
                     TrJiroPreview.Nodes[0].Nodes[1].Nodes[tja.i].BackColor = ColorInfo.GetColor(nowTJP.SongFolderBackColor);
@@ -1017,6 +1021,9 @@ namespace JiroPackEditor
                 TJAs[tjaindex] = tja;
                 nowTJP.TJCs[nowTJCindex].TJAs = TJAs.ToList();
                 SetTJCToView(false);
+
+                DrawSampleViewNowTJP();
+                ChangeSaveStatus();
             }
         }
 
@@ -1052,6 +1059,8 @@ namespace JiroPackEditor
             nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs[0] = null;
             TJAs = nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs.ToArray();
             SetTJCToView(false);
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void BtClear2_Click(object sender, EventArgs e)
@@ -1059,6 +1068,8 @@ namespace JiroPackEditor
             nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs[1] = null;
             TJAs = nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs.ToArray();
             SetTJCToView(false);
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void BtClear3_Click(object sender, EventArgs e)
@@ -1066,6 +1077,8 @@ namespace JiroPackEditor
             nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs[2] = null;
             TJAs = nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs.ToArray();
             SetTJCToView(false);
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void BtClear4_Click(object sender, EventArgs e)
@@ -1073,6 +1086,8 @@ namespace JiroPackEditor
             nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs[3] = null;
             TJAs = nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs.ToArray();
             SetTJCToView(false);
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void BtClear5_Click(object sender, EventArgs e)
@@ -1080,6 +1095,8 @@ namespace JiroPackEditor
             nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs[4] = null;
             TJAs = nowTJP.TJCs[TrPack.SelectedNode.Index].TJAs.ToArray();
             SetTJCToView(false);
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         #endregion
@@ -1091,6 +1108,7 @@ namespace JiroPackEditor
             FolderColorChange(0);
             LbPackBackColorView.BackColor = ColorInfo.GetColor(nowTJP.PackFolderBackColor);
             DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void LbCourseBackColorView_DoubleClick(object sender, EventArgs e)
@@ -1098,6 +1116,7 @@ namespace JiroPackEditor
             FolderColorChange(2);
             LbCourseBackColorView.BackColor = ColorInfo.GetColor(nowTJP.CourseFolderBackColor);
             DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void LbSongBackColorView_DoubleClick(object sender, EventArgs e)
@@ -1105,6 +1124,7 @@ namespace JiroPackEditor
             FolderColorChange(4);
             LbSongBackColorView.BackColor = ColorInfo.GetColor(nowTJP.SongFolderBackColor);
             DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void LbPackForeColorView_DoubleClick(object sender, EventArgs e)
@@ -1112,6 +1132,7 @@ namespace JiroPackEditor
             FolderColorChange(1);
             LbPackForeColorView.BackColor = ColorInfo.GetColor(nowTJP.PackFolderForeColor);
             DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void LbCourseForeColorView_DoubleClick(object sender, EventArgs e)
@@ -1119,6 +1140,7 @@ namespace JiroPackEditor
             FolderColorChange(3);
             LbCourseForeColorView.BackColor = ColorInfo.GetColor(nowTJP.CourseFolderForeColor);
             DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void LbSongForeColorView_DoubleClick(object sender, EventArgs e)
@@ -1126,6 +1148,7 @@ namespace JiroPackEditor
             FolderColorChange(5);
             LbSongForeColorView.BackColor = ColorInfo.GetColor(nowTJP.SongFolderForeColor);
             DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
 
         private void FolderColorChange(int num)
@@ -1512,6 +1535,7 @@ namespace JiroPackEditor
                              NmRatio1,
                              LbPer1,
                              0);
+            ChangeSaveStatus();
         }
 
         private void CbCondition2_SelectedIndexChanged(object sender, EventArgs e)
@@ -1522,6 +1546,7 @@ namespace JiroPackEditor
                              NmRatio2,
                              LbPer2,
                              1);
+            ChangeSaveStatus();
         }
 
         private void CbCondition3_SelectedIndexChanged(object sender, EventArgs e)
@@ -1532,6 +1557,7 @@ namespace JiroPackEditor
                              NmRatio3,
                              LbPer3,
                              2);
+            ChangeSaveStatus();
         }
         #endregion
 
@@ -1894,14 +1920,14 @@ namespace JiroPackEditor
             {
                 Name = nowTJC.Name,
                 Life = nowTJC.Life,
-                TJAs = nowTJC.TJAs,
+                TJAs = nowTJC.TJAs.ToList(),  // ← ToList()で新しいリストを作成
                 IsNumberingEnable = nowTJC.IsNumberingEnable,
-                IsTitleHideList = nowTJC.IsTitleHideList,
+                IsTitleHideList = nowTJC.IsTitleHideList.ToList(),  // ← 同上
                 LevelBackColor = nowTJC.LevelBackColor,
                 LevelForeColor = nowTJC.LevelForeColor,
                 isTJDEnabled = nowTJC.isTJDEnabled,
-                TJDRed = nowTJC.TJDRed,
-                TJDGold = nowTJC.TJDGold,
+                TJDRed = nowTJC.TJDRed.Clone(),  // ← TJDにCloneメソッドが必要
+                TJDGold = nowTJC.TJDGold.Clone(),  // ← 同上
                 isTJDCombine = nowTJC.isTJDCombine
             };
             if (copiedTJC == null) return;
@@ -2039,6 +2065,35 @@ namespace JiroPackEditor
         {
             DrawSampleViewNowTJP();
 
+        }
+
+        private void TbTJA1_TextChanged(object sender, EventArgs e)
+        {
+
+            //ChangeSaveStatus();
+        }
+
+        private void TbTJA2_TextChanged(object sender, EventArgs e)
+        {
+
+            //ChangeSaveStatus();
+        }
+
+        private void TbTJA3_TextChanged(object sender, EventArgs e)
+        {
+
+            //ChangeSaveStatus();
+        }
+
+        private void TbTJA4_TextChanged(object sender, EventArgs e)
+        {
+
+            //ChangeSaveStatus();
+        }
+
+        private void TbTJA5_TextChanged(object sender, EventArgs e)
+        {
+            //ChangeSaveStatus();
         }
     }
 }

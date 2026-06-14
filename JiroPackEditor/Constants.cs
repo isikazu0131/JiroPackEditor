@@ -24,7 +24,7 @@ namespace JiroPackEditor {
             /// <summary>
             /// バージョン
             /// </summary>
-            public const string Version = "V2.1.0";
+            public const string Version = "V2.1.1";
 
             /// <summary>
             /// バージョンを表す6桁番号

@@ -209,6 +209,21 @@ namespace JiroPackEditor {
                 return tjd;
             }
         }
+
+        /// <summary>
+        /// TJDをコピーするようにCloneする
+        /// </summary>
+        /// <returns></returns>
+        public TJD Clone()
+        {
+            TJD cloned = new TJD(this.Name);
+            cloned.PassingConditions = this.PassingConditions
+                .Select(pc => new PassingCondition(pc.passingType, pc.Threshold, pc.Ratio)
+                {
+                    IsSelectedByThreshold = pc.IsSelectedByThreshold
+                }).ToList();
+            return cloned;
+        }
     }
 
     /// <summary>
