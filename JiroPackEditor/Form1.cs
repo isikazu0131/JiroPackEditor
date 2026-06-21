@@ -754,6 +754,7 @@ namespace JiroPackEditor
             nowTJP.CourseFolderForeColor = ColorInfo.GetColorCode(Constants.TJPDefault.CourseForeColor);
             nowTJP.SongFolderBackColor = ColorInfo.GetColorCode(Constants.TJPDefault.SongBackColor);
             nowTJP.SongFolderForeColor = ColorInfo.GetColorCode(Constants.TJPDefault.SongForeColor);
+            NowOpeningFilePath = "";
             isSaved = true;
             DrawTreeViewNowTJP();
             TrPack.SelectedNode = TrPack.Nodes[0];
@@ -847,7 +848,7 @@ namespace JiroPackEditor
                 if (isSaveSuccess)
                 {
                     isSaved = true;
-                    NowOpeningFilePath = sFileDialog.FileName;
+                    NowOpeningFilePath = sFileName;
                     FormTitleChange();
                     return true;
                 }
@@ -1892,7 +1893,7 @@ namespace JiroPackEditor
         private void NmLife_ValueChanged(object sender, EventArgs e)
         {
             if (FlagChangeByUI == true) return;
-            nowTJP.TJCs[nowTJCindex].Life = (int)NmNumbering.Value;
+            nowTJP.TJCs[nowTJCindex].Life = (int)NmLife.Value;
             ChangeSaveStatus();
         }
 

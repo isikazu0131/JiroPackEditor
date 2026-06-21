@@ -10,3 +10,5 @@
 .vs/JiroPackEditor/v17/DocumentLayout.json
 *.json
 *.cache
+*.json
+/JiroPackEditor/obj
