@@ -15,6 +15,8 @@ namespace JiroPackEditor
 {
     public partial class Form1 : Form
     {
+        #region フィールド
+
         /// <summary>
         /// 設定情報
         /// </summary>
@@ -79,6 +81,10 @@ namespace JiroPackEditor
         /// テストプレイ時に生成されたTJC
         /// </summary>
         private List<FileInfo> TestTJCs = new List<FileInfo>();
+
+        #endregion
+
+        #region フォーム初期化
 
         public Form1(string[] args)
         {
@@ -147,6 +153,10 @@ namespace JiroPackEditor
         /// <summary>
         /// 現在のフォームのタイトルを変更します
         /// </summary>
+        #endregion
+
+        #region ツリー・画面表示
+
         private void FormTitleChange()
         {
             // 変更内容の保存状態も書いておきたい
@@ -613,8 +623,8 @@ namespace JiroPackEditor
             }
 
             // フォルダカラー
-            LbLevelColorView.BackColor = ColorInfo.GetColor(nowTJC.LevelBackColor);
-            LbLevelColorView.ForeColor = ColorInfo.GetColor(nowTJC.LevelForeColor);
+            LbCourseSongBackColorView.BackColor = ColorInfo.GetColor(nowTJC.LevelBackColor);
+            LbCourseSongForeColorView.BackColor = ColorInfo.GetColor(nowTJC.LevelForeColor);
 
             // 新規作成したTJCなら初期配置にする
             if (isCreatedNewTJC)
@@ -694,6 +704,10 @@ namespace JiroPackEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        #endregion
+
+        #region ドラッグ＆ドロップ
+
         private void Form1_DragDrop(object sender, DragEventArgs e)
         {
             string[] Files = null;
@@ -730,6 +744,8 @@ namespace JiroPackEditor
                 ChangeSaveStatus();
             }
         }
+
+        #endregion
 
         #region IO関係
         /// <summary>
@@ -848,7 +864,7 @@ namespace JiroPackEditor
                 if (isSaveSuccess)
                 {
                     isSaved = true;
-                    NowOpeningFilePath = sFileName;
+                    NowOpeningFilePath = sFileDialog.FileName;
                     FormTitleChange();
                     return true;
                 }
@@ -906,6 +922,8 @@ namespace JiroPackEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        #region ドラッグ受付
+
         private void Form1_DragEnter(object sender, DragEventArgs e)
         {
             // ファイルの場合のみ処理を行う
@@ -918,6 +936,8 @@ namespace JiroPackEditor
                 e.Effect = DragDropEffects.None;
             }
         }
+
+        #endregion
 
         #region 画面上部メニュー
 
@@ -1194,14 +1214,14 @@ namespace JiroPackEditor
         {
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                LbLevelColorView.BackColor = colorDialog.Color;
+                LbCourseSongForeColorView.BackColor = colorDialog.Color;
             }
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                LbLevelColorView.ForeColor = colorDialog.Color;
+                LbCourseSongForeColorView.ForeColor = colorDialog.Color;
             }
-            nowTJP.TJCs[nowTJCindex].LevelBackColor = ColorInfo.GetColorCode(LbLevelColorView.BackColor);
-            nowTJP.TJCs[nowTJCindex].LevelForeColor = ColorInfo.GetColorCode(LbLevelColorView.ForeColor);
+            nowTJP.TJCs[nowTJCindex].LevelBackColor = ColorInfo.GetColorCode(LbCourseSongForeColorView.BackColor);
+            nowTJP.TJCs[nowTJCindex].LevelForeColor = ColorInfo.GetColorCode(LbCourseSongForeColorView.ForeColor);
             ChangeSaveStatus();
         }
 
@@ -1326,6 +1346,8 @@ namespace JiroPackEditor
 
         #endregion
 
+        #region ヘルプ・テンプレート操作
+
         private void ヘルプToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Random random = new Random();
@@ -1422,6 +1444,8 @@ namespace JiroPackEditor
             }
             UpdateThresholdByRatio();
         }
+
+        #endregion
 
         #region 条件設定
         /// <summary>
@@ -1571,6 +1595,8 @@ namespace JiroPackEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        #region 合格条件切り替え・テスト・出力
+
         private void CbRedOrGold_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (nowTJC == null) return;
@@ -1669,6 +1695,8 @@ namespace JiroPackEditor
                 MessageBox.Show("エクスポートに失敗しました");
             }
         }
+
+        #endregion
 
         #region 合格条件変更
         /// <summary>
@@ -1859,6 +1887,8 @@ namespace JiroPackEditor
         }
         #endregion
 
+        #region コースオプション
+
         private void CbTitleInvisible_CheckedChanged(object sender, EventArgs e)
         {
             if (FlagChangeByUI == true) return;
@@ -1897,6 +1927,10 @@ namespace JiroPackEditor
             ChangeSaveStatus();
         }
 
+        #endregion
+
+        #region アプリ情報
+
         private void このアプリについての情報ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AppInfoDialog aInfoDialog = new AppInfoDialog();
@@ -1908,6 +1942,10 @@ namespace JiroPackEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        #endregion
+
+        #region TJCの複製
+
         private void RClickMenuTJCDuplicate_Click(object sender, EventArgs e)
         {
             TJCDuplicate();
@@ -1946,6 +1984,10 @@ namespace JiroPackEditor
             DrawSampleViewNowTJP();
             ChangeSaveStatus();
         }
+
+        #endregion
+
+        #region フォーム外観・ウィンドウ操作
 
         private void PanelCourse_Paint(object sender, PaintEventArgs e)
         {
@@ -2003,6 +2045,10 @@ namespace JiroPackEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        #endregion
+
+        #region 楽曲表示・出力フォルダ設定
+
         private void CbTitleUnVisible1_CheckedChanged(object sender, EventArgs e)
         {
             if (FlagChangeByUI == true) return;
@@ -2105,6 +2151,121 @@ namespace JiroPackEditor
         private void TbTJA5_TextChanged(object sender, EventArgs e)
         {
             //ChangeSaveStatus();
+        }
+        #endregion
+
+        #region Song order
+
+        private void BtSongMoveUp1_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(0, -1);
+        }
+
+        private void BtSongMoveDown1_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(0, 1);
+        }
+
+        private void BtSongMoveUp2_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(1, -1);
+        }
+
+        private void BtSongMoveDown2_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(1, 1);
+        }
+
+        private void BtSongMoveUp3_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(2, -1);
+        }
+
+        private void BtSongMoveDown3_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(2, 1);
+        }
+
+        private void BtSongMoveUp4_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(3, -1);
+        }
+
+        private void BtSongMoveDown4_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(3, 1);
+        }
+
+        private void BtSongMoveUp5_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(4, -1);
+        }
+
+        private void BtSongMoveDown5_Click(object sender, EventArgs e)
+        {
+            MoveCourseSong(4, 1);
+        }
+
+        private void MoveCourseSong(int index, int direction)
+        {
+            int destination = index + direction;
+            if (FlagChangeByUI || nowTJC == null || TrPack.SelectedNode?.Level != 1 ||
+                index < 0 || index >= nowTJC.TJAs.Count ||
+                destination < 0 || destination >= nowTJC.TJAs.Count)
+                return;
+
+            // Keep each song's title visibility setting with its chart, including empty slots.
+            (nowTJC.TJAs[index], nowTJC.TJAs[destination]) =
+                (nowTJC.TJAs[destination], nowTJC.TJAs[index]);
+            (nowTJC.IsTitleHideList[index], nowTJC.IsTitleHideList[destination]) =
+                (nowTJC.IsTitleHideList[destination], nowTJC.IsTitleHideList[index]);
+            TJAs = nowTJC.TJAs.ToArray();
+
+            FlagChangeByUI = true;
+            try
+            {
+                SetTJCToView(false);
+            }
+            finally
+            {
+                FlagChangeByUI = false;
+            }
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
+        }
+
+        #endregion
+
+        private void LbCourseSongForeColorView_DoubleClick(object sender, EventArgs e)
+        {
+            if (nowTJC == null || TrPack.SelectedNode?.Level != 1) return;
+
+            using (ColorDialog dialog = new ColorDialog())
+            {
+                dialog.Color = ColorInfo.GetColor(nowTJC.LevelForeColor);
+                if (dialog.ShowDialog() != DialogResult.OK) return;
+
+                nowTJC.LevelForeColor = ColorInfo.GetColorCode(dialog.Color);
+                LbCourseSongForeColorView.BackColor = dialog.Color;
+            }
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
+        }
+
+        private void LbCourseSongBackColorView_DoubleClick(object sender, EventArgs e)
+        {
+            if (nowTJC == null || TrPack.SelectedNode?.Level != 1) return;
+
+            using (ColorDialog dialog = new ColorDialog())
+            {
+                dialog.Color = ColorInfo.GetColor(nowTJC.LevelBackColor);
+                if (dialog.ShowDialog() != DialogResult.OK) return;
+
+                nowTJC.LevelBackColor = ColorInfo.GetColorCode(dialog.Color);
+                LbCourseSongBackColorView.BackColor = dialog.Color;
+            }
+            DrawSampleViewNowTJP();
+            ChangeSaveStatus();
         }
     }
 }

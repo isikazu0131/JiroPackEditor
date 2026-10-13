@@ -178,8 +178,34 @@ namespace JiroPackEditor {
                 return false;
             }
 
+            // パック名からフォルダ名を作る（末尾の空白や「.」も取り除く）
+            string OutputTJPDName = GrobalMethod.CutInvalidChar(tjp.Name).TrimEnd(' ', '.');
+            if (String.IsNullOrWhiteSpace(OutputTJPDName) ||
+                OutputTJPDName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0) {
+                MessageBox.Show("パック名からフォルダ名を作成できません。パック名を変更してください。",
+                                "ざんねん", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             // tjpを出力するフォルダ(完全パス)
-            var OutputTJPDPath = Path.Combine(setting.PackOutputFolderName, GrobalMethod.CutInvalidChar(tjp.Name));
+            string OutputTJPDPath;
+            try {
+                string OutputFolderPath = Path.TrimEndingDirectorySeparator(Path.GetFullPath(setting.PackOutputFolderName));
+                OutputTJPDPath = Path.GetFullPath(Path.Combine(OutputFolderPath, OutputTJPDName));
+
+                // 出力先フォルダ自身や、その外側のフォルダを削除しないようにする
+                if (String.Equals(OutputTJPDPath, OutputFolderPath, StringComparison.OrdinalIgnoreCase) ||
+                    String.Equals(Path.GetDirectoryName(OutputTJPDPath), OutputFolderPath, StringComparison.OrdinalIgnoreCase) == false) {
+                    MessageBox.Show("パックの出力先が正しくありません。パック名と出力先フォルダを確認してください。",
+                                    "ざんねん", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show($"出力先フォルダの確認に失敗しました。\r\n{ex.Message}",
+                                "ざんねん", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             DirectoryInfo OutputTJPDInfo = new DirectoryInfo(OutputTJPDPath);
 
             // すでにエクスポートされたパックが存在していた場合
@@ -190,7 +216,18 @@ namespace JiroPackEditor {
                 }
                 // 削除する
                 try {
+                    // 確認中にリンクへ変更された場合も、リンク先を削除しない
+                    OutputTJPDInfo.Refresh();
+                    if ((OutputTJPDInfo.Attributes & FileAttributes.ReparsePoint) != 0) {
+                        MessageBox.Show("リンクされたフォルダには上書きできません。",
+                                        "ざんねん", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                     OutputTJPDInfo.Delete(true);
+                }
+                catch (UnauthorizedAccessException ex) {
+                    MessageBox.Show($"パックフォルダを削除できません。\r\n{ex.Message}", "ざんねん", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
                 catch (DirectoryNotFoundException) {
                     MessageBox.Show("パックフォルダが見つかりませんでした。\r\n" +

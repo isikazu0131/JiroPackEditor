@@ -24,12 +24,12 @@ namespace JiroPackEditor {
             /// <summary>
             /// バージョン
             /// </summary>
-            public const string Version = "V2.1.3";
+            public const string Version = "V2.2.0";
 
             /// <summary>
             /// バージョンを表す6桁番号
             /// </summary>
-            public const int VersionInt = 020103;
+            public const int VersionInt = 020200;
 
             /// <summary>
             /// GitHubリンク

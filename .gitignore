@@ -12,3 +12,11 @@
 *.cache
 *.json
 /JiroPackEditor/obj
+*.docx
+/.manual-work
+/.dotnet-home
+*.zip
+/.vs/JiroPackEditor/v17
+/.vs
+/.vs
+/.github
