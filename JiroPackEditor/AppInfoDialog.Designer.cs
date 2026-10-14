@@ -59,9 +59,9 @@
             // pictureBox1
             // 
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Image = Properties.Resources.miosunaicon;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(416, 152);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(99, 105);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -83,7 +83,7 @@
             // button1
             // 
             button1.Location = new Point(416, 265);
-            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
             button1.Size = new Size(99, 29);
             button1.TabIndex = 4;
@@ -102,7 +102,7 @@
             Controls.Add(LinkGitHub);
             Controls.Add(LbInfo);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AppInfoDialog";

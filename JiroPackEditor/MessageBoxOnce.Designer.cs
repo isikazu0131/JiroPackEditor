@@ -22,56 +22,63 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
-            this.LbMsg = new System.Windows.Forms.Label();
-            this.BtOk = new System.Windows.Forms.Button();
-            this.CbNextView = new System.Windows.Forms.CheckBox();
-            this.SuspendLayout();
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageBoxOnce));
+            LbMsg = new Label();
+            BtOk = new Button();
+            CbNextView = new CheckBox();
+            SuspendLayout();
             // 
             // LbMsg
             // 
-            this.LbMsg.Location = new System.Drawing.Point(12, 9);
-            this.LbMsg.Name = "LbMsg";
-            this.LbMsg.Size = new System.Drawing.Size(219, 45);
-            this.LbMsg.TabIndex = 0;
-            this.LbMsg.Text = "label1";
+            LbMsg.Location = new Point(14, 11);
+            LbMsg.Margin = new Padding(4, 0, 4, 0);
+            LbMsg.Name = "LbMsg";
+            LbMsg.Size = new Size(255, 56);
+            LbMsg.TabIndex = 0;
+            LbMsg.Text = "label1";
             // 
             // BtOk
             // 
-            this.BtOk.Location = new System.Drawing.Point(145, 53);
-            this.BtOk.Name = "BtOk";
-            this.BtOk.Size = new System.Drawing.Size(75, 23);
-            this.BtOk.TabIndex = 1;
-            this.BtOk.Text = "OK";
-            this.BtOk.UseVisualStyleBackColor = true;
-            this.BtOk.Click += new System.EventHandler(this.BtOk_Click);
+            BtOk.Location = new Point(169, 66);
+            BtOk.Margin = new Padding(4, 4, 4, 4);
+            BtOk.Name = "BtOk";
+            BtOk.Size = new Size(88, 29);
+            BtOk.TabIndex = 1;
+            BtOk.Text = "OK";
+            BtOk.UseVisualStyleBackColor = true;
+            BtOk.Click += BtOk_Click;
             // 
             // CbNextView
             // 
-            this.CbNextView.AutoSize = true;
-            this.CbNextView.Location = new System.Drawing.Point(14, 57);
-            this.CbNextView.Name = "CbNextView";
-            this.CbNextView.Size = new System.Drawing.Size(125, 16);
-            this.CbNextView.TabIndex = 2;
-            this.CbNextView.Text = "次回以降表示しない";
-            this.CbNextView.UseVisualStyleBackColor = true;
+            CbNextView.AutoSize = true;
+            CbNextView.Location = new Point(16, 71);
+            CbNextView.Margin = new Padding(4, 4, 4, 4);
+            CbNextView.Name = "CbNextView";
+            CbNextView.Size = new Size(126, 19);
+            CbNextView.TabIndex = 2;
+            CbNextView.Text = "次回以降表示しない";
+            CbNextView.UseVisualStyleBackColor = true;
             // 
             // MessageBoxOnce
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 87);
-            this.Controls.Add(this.CbNextView);
-            this.Controls.Add(this.BtOk);
-            this.Controls.Add(this.LbMsg);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "MessageBoxOnce";
-            this.Text = "MessageBoxOnce";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MessageBoxOnce_FormClosing);
-            this.Load += new System.EventHandler(this.MessageBoxOnce_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(272, 109);
+            Controls.Add(CbNextView);
+            Controls.Add(BtOk);
+            Controls.Add(LbMsg);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 4, 4, 4);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "MessageBoxOnce";
+            Text = "MessageBoxOnce";
+            FormClosing += MessageBoxOnce_FormClosing;
+            Load += MessageBoxOnce_Load;
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

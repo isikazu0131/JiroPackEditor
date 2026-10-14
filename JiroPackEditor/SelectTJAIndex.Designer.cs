@@ -22,62 +22,62 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectTJAIndex));
-            this.label1 = new System.Windows.Forms.Label();
-            this.CbTJANum = new System.Windows.Forms.ComboBox();
-            this.BtOK = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            label1 = new Label();
+            CbTJANum = new ComboBox();
+            BtOK = new Button();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 35);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ドラッグアンドドロップしたTJAファイルをコース内の何番目に入れるか選択してください";
+            label1.Location = new Point(14, 11);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(303, 44);
+            label1.TabIndex = 0;
+            label1.Text = "ドラッグアンドドロップしたTJAファイルをコース内の何番目に入れるか選択してください";
             // 
             // CbTJANum
             // 
-            this.CbTJANum.BackColor = System.Drawing.Color.White;
-            this.CbTJANum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbTJANum.FormattingEnabled = true;
-            this.CbTJANum.Items.AddRange(new object[] {
-            "1曲目",
-            "2曲目",
-            "3曲目",
-            "4曲目",
-            "5曲目"});
-            this.CbTJANum.Location = new System.Drawing.Point(14, 47);
-            this.CbTJANum.Name = "CbTJANum";
-            this.CbTJANum.Size = new System.Drawing.Size(177, 20);
-            this.CbTJANum.TabIndex = 1;
+            CbTJANum.BackColor = Color.White;
+            CbTJANum.DropDownStyle = ComboBoxStyle.DropDownList;
+            CbTJANum.FormattingEnabled = true;
+            CbTJANum.Items.AddRange(new object[] { "1曲目", "2曲目", "3曲目", "4曲目", "5曲目" });
+            CbTJANum.Location = new Point(16, 59);
+            CbTJANum.Margin = new Padding(4, 4, 4, 4);
+            CbTJANum.Name = "CbTJANum";
+            CbTJANum.Size = new Size(206, 23);
+            CbTJANum.TabIndex = 1;
             // 
             // BtOK
             // 
-            this.BtOK.Location = new System.Drawing.Point(197, 47);
-            this.BtOK.Name = "BtOK";
-            this.BtOK.Size = new System.Drawing.Size(75, 23);
-            this.BtOK.TabIndex = 2;
-            this.BtOK.Text = "OK";
-            this.BtOK.UseVisualStyleBackColor = true;
-            this.BtOK.Click += new System.EventHandler(this.BtOK_Click);
+            BtOK.Location = new Point(230, 59);
+            BtOK.Margin = new Padding(4, 4, 4, 4);
+            BtOK.Name = "BtOK";
+            BtOK.Size = new Size(88, 29);
+            BtOK.TabIndex = 2;
+            BtOK.Text = "OK";
+            BtOK.UseVisualStyleBackColor = true;
+            BtOK.Click += BtOK_Click;
             // 
             // SelectTJAIndex
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 82);
-            this.Controls.Add(this.BtOK);
-            this.Controls.Add(this.CbTJANum);
-            this.Controls.Add(this.label1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "SelectTJAIndex";
-            this.TopMost = true;
-            this.Load += new System.EventHandler(this.SelectTJAIndex_Load);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(331, 102);
+            Controls.Add(BtOK);
+            Controls.Add(CbTJANum);
+            Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 4, 4, 4);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "SelectTJAIndex";
+            TopMost = true;
+            Load += SelectTJAIndex_Load;
+            ResumeLayout(false);
 
         }
 
